@@ -1,7 +1,6 @@
 package uniandes.isis2304.superAndes.negocio;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
+
 
 public class Producto {
 	

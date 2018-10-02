@@ -1,6 +1,6 @@
 package uniandes.isis2304.superAndes.negocio;
 
-public class Bodega {
+public class Bodega extends Almacenamiento{
 	
 	private double capacidadVolumen;
 	

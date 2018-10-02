@@ -1,6 +1,6 @@
 package uniandes.isis2304.superAndes.negocio;
 
-public class Estante {
+public class Estante extends Almacenamiento{
 	
 	private double abastecimiento;
 	

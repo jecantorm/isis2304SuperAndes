@@ -15,7 +15,7 @@ public class Empresa extends Cliente{
 	
 	public Empresa(String nombre, String correo, int puntosFidelizacion, String documento, String nit, String direccion)
 	{
-		super(nombre,correo,puntosFidelizacion);
+		super(nombre,correo,puntosFidelizacion,"Empresa");
 		this.direccion = direccion;
 		this.nit = nit;
 	}

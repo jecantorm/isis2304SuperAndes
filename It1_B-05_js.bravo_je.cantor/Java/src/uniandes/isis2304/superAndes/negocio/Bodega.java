@@ -1,33 +1,36 @@
 package uniandes.isis2304.superAndes.negocio;
 
-public class Bodega {
+/**
+ * Clase para modelar el concepto BODEGA del negocio de SuperAndes.
+ *
+ * @author Juan Sebastián Bravo
+ */
+public class Bodega extends Almacenamiento {
 	
-	private double capacidadVolumen;
+	/* ****************************************************************
+	 * 			Métodos 
+	 *****************************************************************/
 	
-	private double capacidadPeso;
-	
-	private int cantidadProductos;
-	
+	/**
+     * Constructor sin parámetros por defecto
+     */
 	public Bodega()
 	{
-		capacidadVolumen = 0.0;
-		capacidadPeso = 0.0;
-		cantidadProductos = 0;
+		super();
 	}
 	
-	public Bodega(double capacidadVolumen, double capacidadPeso, int cantidadProductos)
+	/**
+	 * Constructor con valores.
+	 * @param idAlmacenamiento - El id de la bodega.
+	 * @param cantidadProductos - La cantidad de productos que posee la bodega.
+	 * @param capacidadPeso - El peso máximo que soporta la bodega en gr.
+	 * @param capacidadVolumen - El volumen máximo que soporta la bodega en cm3.
+	 */
+	
+	public Bodega (long idAlmacenamiento, int cantidadProductos, double capacidadPeso, double capacidadVolumen)
 	{
-		this.capacidadVolumen = capacidadVolumen;
-		this.capacidadPeso = capacidadPeso;
-		this.cantidadProductos = cantidadProductos;
+		super(idAlmacenamiento, cantidadProductos, capacidadPeso, capacidadVolumen);
 	}
 	
-	public double getCapacidadVolumen(){return capacidadVolumen;}
-	public double getCapacidadPeso(){return capacidadPeso;}
-	public double getCapacidadProductos(){return cantidadProductos;}
-	
-	public void setCapacidadVolumen(double capacidadVolumen){this.capacidadVolumen = capacidadVolumen;}
-	public void setCapacidadPeso(double capacidadPeso){this.capacidadPeso = capacidadPeso;}
-	public void setCapacidadProductos(int cantidadProductos){this.cantidadProductos = cantidadProductos;}
            
 }

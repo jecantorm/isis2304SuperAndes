@@ -3,36 +3,44 @@ package uniandes.isis2304.superAndes.negocio;
 
 public class Factura {
 	
+	private Long numeroFactura;
+	
 	private String fecha;
-	
-	private String tipoCliente;
-	
+		
 	private String nombreCliente;
 	
-	private String nombreLocalVentas;
+	private String nombreSucursal;
 	
 	private double valorTotal;
 	
 	public Factura()
 	{
-		tipoCliente = "";
+		numeroFactura = 0L;
+		fecha = "";
 		nombreCliente = "";
-		nombreLocalVentas = "";
+		nombreSucursal = "";
+		valorTotal = 0;
 	}
 	
-	public Factura(String tipoCliente, String nombreCliente, String nombreLocalVentas, String idFactura, String fecha, double valorTotal)
+	public Factura(Long numeroFactura,String tipoCliente, String nombreCliente, String nombreSucursal, String idFactura, String fecha, double valorTotal)
 	{
+		this.numeroFactura = numeroFactura;
 		this.fecha = fecha;
 		this.valorTotal = valorTotal;
-		this.tipoCliente = tipoCliente;
 		this.nombreCliente = nombreCliente;
-		this.nombreLocalVentas = nombreLocalVentas;
+		this.nombreSucursal = nombreSucursal;
 	}
 	
+	public Long getNumeroFactura(){return numeroFactura;}
 	public String getFecha(){return fecha;}
-	public String getTipoCliente(){return tipoCliente;}
 	public String getNombreCliente(){return nombreCliente;}
-	public String getNombreLocalVentas(){return nombreLocalVentas;}
+	public String getNombreSucursal(){return nombreSucursal;}
 	public double getValorTotal(){return valorTotal;}
+	
+	public void setNumeroFactura(Long numeroFactura){this.numeroFactura = numeroFactura;}
+	public void setFecha(String fecha){this.fecha = fecha;}
+	public void setNombreCliente(String nombreCliente){this.nombreCliente = nombreCliente;}
+	public void setNombreSucursal(String nombreSucursal){this.nombreSucursal = nombreSucursal;}
+	public void setValorTotal(double valorTotal){this.valorTotal = valorTotal;}
 
 }

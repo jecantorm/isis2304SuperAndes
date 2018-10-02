@@ -83,7 +83,7 @@ public class SQLFactura {
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + psa.darTablaFactura () + " WHERE nombreSucursal = ?");
 		q.setParameters(nombreSucursal);
-		q.setResultClass(Cliente.class);
+		q.setResultClass(Factura.class);
 		return (List<Factura>) q.executeList();
 	}
 

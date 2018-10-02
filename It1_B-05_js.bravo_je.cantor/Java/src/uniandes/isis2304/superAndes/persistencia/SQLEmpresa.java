@@ -80,7 +80,7 @@ public class SQLEmpresa {
 	public List<Empresa> darPersonasNaturales (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + psa.darTablaEmpresa ());
-		q.setResultClass(Cliente.class);
+		q.setResultClass(Empresa.class);
 		return (List<Empresa>) q.executeList();
 	}
 

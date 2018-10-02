@@ -171,7 +171,7 @@ public class ConexionTest {
 		// Ahora si se puede probar si la tabla existe o no...
 		try
 		{
-			//superAndes.darTiposBebida ();
+			//superAndes.darPromociones ();
 			fail ("Debería fallar. La tabla consultada no existe en la BD");
 		}
 		catch (Exception e)

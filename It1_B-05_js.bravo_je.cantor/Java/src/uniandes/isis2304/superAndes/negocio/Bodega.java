@@ -1,11 +1,15 @@
 package uniandes.isis2304.superAndes.negocio;
 
+<<<<<<< HEAD
 /**
  * Clase para modelar el concepto BODEGA del negocio de SuperAndes.
  *
  * @author Juan Sebastián Bravo
  */
 public class Bodega extends Almacenamiento {
+=======
+public class Bodega extends Almacenamiento{
+>>>>>>> be693d3685fb54ba130e13d7115c6e5f543723bc
 	
 	/* ****************************************************************
 	 * 			Métodos 

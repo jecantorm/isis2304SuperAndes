@@ -4,24 +4,24 @@ public class LocalVentas {
 	
 	private String nombreLocalVentas;
 	
-	private String nombreEstante;
+	private Long idEstante;
 	
 	public LocalVentas()
 	{
 		this.nombreLocalVentas = "";
-		this.nombreEstante = "";
+		this.idEstante = 0L;
 	}
 	
-	public LocalVentas(String nombreLocalVentas, String nombreEstante)
+	public LocalVentas(String nombreLocalVentas, Long idEstante)
 	{
 		this.nombreLocalVentas = nombreLocalVentas;
-		this.nombreEstante = nombreEstante;
+		this.idEstante = idEstante;
 	}
 	
 	public String getNombreLocalVentas(){return nombreLocalVentas;}
-	public String getNombreEstante(){return nombreEstante;}
+	public Long getIdEstante(){return idEstante;}
 	
 	public void setNombreLocalVentas(String nombreLocalVentas){this.nombreLocalVentas = nombreLocalVentas;}
-	public void setNombreEstante(String nombreEstante){this.nombreEstante = nombreEstante;}
+	public void setNombreEstante(Long idEstante){this.idEstante = idEstante;}
 
 }

@@ -25,9 +25,11 @@ public class Cliente {
 	public String getNombre(){return nombre;}
 	public String getCorreo(){return correo;}
 	public int getPuntosFidelizacion(){return puntosFidelizacion;}
+
 	
 	public void setNombre(String nombre){this.nombre = nombre;}
 	public void setCorreo(String correo){this.correo = correo;}
 	public void setPuntosFidelizacion(int puntosFidelizacion){this.puntosFidelizacion = puntosFidelizacion;}
+
 
 }

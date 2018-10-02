@@ -1,59 +1,194 @@
 package uniandes.isis2304.superAndes.negocio;
 
+import java.util.Date;
+
+/**
+ * Clase para modelar el concepto PROMOCION del negocio de SuperAndes.
+ *
+ * @author Juan Sebastián Bravo
+ */
 public class Promocion {
-	
-	private Long idPromocion;
-	
-	private String codigoBarrasProducto;
-	
-	private String nitProveedor;
-	
+
+	/* ****************************************************************
+	 * 			Atributos
+	 *****************************************************************/
+
+	/**
+	 * El identificador ÚNICO de la promoción.
+	 */
+	private long idPromocion;
+
+	/**
+	 * El nit del proveedor del producto del cual es la promoción.
+	 */
+	private int nitProveedor;
+
+	/**
+	 * El tipo de promoción.
+	 */
 	private String tipoPromocion;
-	
+
+	/**
+	 * El nombre de la promoción.
+	 */
 	private String nombrePromocion;
-	
-	private String fechaInicial;
-	
-	private String fechaFinal;
-	
+
+	/**
+	 * La fecha de inicio de la promoción.
+	 */
+	private Date fechaInicial;
+
+	/**
+	 * La fecha de fin de la promoción.
+	 */
+	private Date fechaFinal;
+
+	/* ****************************************************************
+	 * 			Métodos
+	 *****************************************************************/
+
+	/**
+	 * Constructor sin parámetros por defecto
+	 */
 	public Promocion()
 	{
-		idPromocion = 0L;
-		codigoBarrasProducto = "";
-		nitProveedor = "";
-		tipoPromocion = "";
-		nombrePromocion = "";
-		fechaInicial = "";
-		fechaFinal = "";
+		this.setIdPromocion(0);
+		this.setNitProveedor(0);
+		this.setTipoPromocion("");
+		this.setNombrePromocion("");
+		this.setFechaInicial(new Date());
+		this.setFechaFinal(new Date());
 	}
-	
-	public Promocion(Long idPromocion, String codigoBarrasProducto, String nitProveedor, String tipoPromocion, String nombrePromocion, String fechaInicial, String fechaFinal)
+
+	/**
+	 * Constructor con valores.
+	 * @param idPromocion - El identificador de la promoción.
+	 * @param nitProveedor - El nit del proveedor del producto del cual es la promoción.
+	 * @param tipoPromocion - El tipo de promoción.
+	 * @param nombrePromocion - El nombre de la promoción.
+	 * @param fechaInicial - La fecha de inicio de la promoción.
+	 * @param fechaFinal - La fecha de fin de la promoción.
+	 */
+	public Promocion(long idPromocion, int nitProveedor, String tipoPromocion, String nombrePromocion, Date fechaInicial, Date fechaFinal)
 	{
-		this.idPromocion = idPromocion;         
-	    this.codigoBarrasProducto = codigoBarrasProducto;
-	    this.nitProveedor = nitProveedor;        
-	    this.tipoPromocion = tipoPromocion;       
-	    this.nombrePromocion = nombrePromocion;
-	    this.fechaInicial = fechaInicial;
-	    this.fechaFinal = fechaFinal;
+		this.setIdPromocion(idPromocion);
+		this.setNitProveedor(nitProveedor);
+		this.setTipoPromocion(tipoPromocion);
+		this.setNombrePromocion(nombrePromocion);
+		this.setFechaInicial(fechaInicial);
+		this.setFechaFinal(fechaFinal);
 	}
-	
-	public Long getidPromocion (){return idPromocion;}         
-	public String getcodigoBarrasProducto (){return codigoBarrasProducto;}
-	public String getnitProveedor (){return nitProveedor;}        
-	public String gettipoPromocion (){return tipoPromocion;}       
-	public String getnombrePromocion (){return nombrePromocion;}
-	public String getFechaInicial(){return fechaInicial;}
-	public String getFechaFinal(){return fechaFinal;}
-	
-	
-	public void setidPromocion (Long idPromocion){this.idPromocion = idPromocion;}                      
-	public void setcodigoBarrasProducto (String codigoBarrasProducto){this.codigoBarrasProducto = codigoBarrasProducto;}  
-	public void setnitProveedor (String nitProveedor){this.nitProveedor = nitProveedor;}                  
-	public void settipoPromocion (String tipoPromocion){this.tipoPromocion = tipoPromocion;}                
-	public void setnombrePromocion (String nombrePromocion){this.nombrePromocion = nombrePromocion;}      
-	public void setFechaInicial(String fechaInicial){this.fechaInicial = fechaInicial;}
-	public void setFechaFinal(String fechaFinal){this.fechaFinal = fechaFinal;}
-	
+
+	/**
+	 * Retorna el identificador de la promoción.
+	 * 
+	 * @return El identificador de la promoción.
+	 */
+	public long getIdPromocion() {
+		return idPromocion;
+	}
+
+	/**
+	 * Asigna el identificador de la promoción.
+	 * 
+	 * @param idPromocion - El identificador de la promoción.
+	 */
+	public void setIdPromocion(long idPromocion) {
+		this.idPromocion = idPromocion;
+	}
+
+	/**
+	 * Retorna el nit del proveedor del producto del cual es la promoción.
+	 * 
+	 * @return El nit del proveedor del producto del cual es la promoción.
+	 */
+	public int getNitProveedor() {
+		return nitProveedor;
+	}
+
+	/**
+	 * Asigna el nit del proveedor del producto del cual es la promoción.
+	 * 
+	 * @param nitProveedor - El nit del proveedor del producto del cual es la promoción.
+	 */
+	public void setNitProveedor(int nitProveedor) {
+		this.nitProveedor = nitProveedor;
+	}
+
+	/**
+	 * Retorna el tipo de la promoción.
+	 * 
+	 * @return El tipo de la promoción.
+	 */
+	public String getTipoPromocion() {
+		return tipoPromocion;
+	}
+
+	/**
+	 * Asigna el tipo de la promoción.
+	 * 
+	 * @param tipoPromocion - El tipo de la promoción.
+	 */
+	public void setTipoPromocion(String tipoPromocion) {
+		this.tipoPromocion = tipoPromocion;
+	}
+
+	/**
+	 * Retorna el nombre de la promoción.
+	 * 
+	 * @return El nombre de la promoción.
+	 */
+	public String getNombrePromocion() {
+		return nombrePromocion;
+	}
+
+	/**
+	 * Asigna el nombre de la promoción.
+	 * 
+	 * @param nombrePromocion - El nombre de la promoción.
+	 */
+	public void setNombrePromocion(String nombrePromocion) {
+		this.nombrePromocion = nombrePromocion;
+	}
+
+	/**
+	 * Retorna la fecha de inicio de la promoción.
+	 * 
+	 * @return La fecha de inicio de la promoción.
+	 */
+	public Date getFechaInicial() {
+		return fechaInicial;
+	}
+
+	/**
+	 * Asigna la fecha de inicio de la promoción.
+	 * 
+	 * @param fechaInicial - La fecha de inicio de la promoción.
+	 */
+	public void setFechaInicial(Date fechaInicial) {
+		this.fechaInicial = fechaInicial;
+	}
+
+	/**
+	 * Retorna la fecha de fin de la promoción.
+	 * 
+	 * @return La fecha de fin de la promoción.
+	 */
+	public Date getFechaFinal() {
+		return fechaFinal;
+	}
+
+	/**
+	 * Asigna la fecha de fin de la promoción.
+	 * 
+	 * @param fechaFinal - La fecha de fin de la promoción.
+	 */
+	public void setFechaFinal(Date fechaFinal) {
+		this.fechaFinal = fechaFinal;
+	}
+
+
+
+
 
 }

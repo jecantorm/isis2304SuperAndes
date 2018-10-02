@@ -1,27 +1,85 @@
 package uniandes.isis2304.superAndes.negocio;
 
+/**
+ * Clase para modelar el concepto LOCAL_VENTAS del negocio de SuperAndes.
+ *
+ * @author Juan Sebastián Bravo
+ */
+
 public class LocalVentas {
 	
-	private String nombreLocalVentas;
+	/* ****************************************************************
+	 * 			Atributos
+	 *****************************************************************/
+
+	/**
+	 * El identificador ÚNICO del local de ventas.
+	 */
+	private long idLocalVentas;
 	
-	private Long idEstante;
+	/**
+	 * Los ingresos asociados al local de ventas.
+	 */
+	private int ingresos;
 	
+	/* ****************************************************************
+	 * 			Métodos 
+	 *****************************************************************/
+	/**
+	 * Constructor sin parámetros por defecto
+	 */
 	public LocalVentas()
 	{
-		this.nombreLocalVentas = "";
-		this.idEstante = 0L;
+		this.setIdLocalVentas(0);
+		this.setIngresos(0);		
 	}
 	
-	public LocalVentas(String nombreLocalVentas, Long idEstante)
+	/**
+	 * Constructor con valores.
+	 * @param idLocalVentas - El id del local de ventas.
+	 * @param ingresos - Los ingresos asociados al local de ventas.
+	 */
+	public LocalVentas(long idLocalVentas, int ingresos)
 	{
-		this.nombreLocalVentas = nombreLocalVentas;
-		this.idEstante = idEstante;
+		this.setIdLocalVentas(0);
+		this.setIngresos(ingresos);
+	}
+
+	/**
+	 * Retorna el id del local de ventas.
+	 * 
+	 * @return El id del local de ventas.
+	 */
+	public long getIdLocalVentas() {
+		return idLocalVentas;
+	}
+
+	/**
+	 * Asigna el id del local de ventas.
+	 * 
+	 * @param idLocalVentas -  El id del local de ventas.
+	 */
+	public void setIdLocalVentas(long idLocalVentas) {
+		this.idLocalVentas = idLocalVentas;
+	}
+
+	/**
+	 * Retorna los ingresos del local de ventas.
+	 * 
+	 * @return Los ingresos del local de ventas.
+	 */
+	public int getIngresos() {
+		return ingresos;
+	}
+
+	/**
+	 * Asigna los ingresos del local de ventas.
+	 * 
+	 * @param ingresos - Los ingresos del local de ventas.
+	 */
+	public void setIngresos(int ingresos) {
+		this.ingresos = ingresos;
 	}
 	
-	public String getNombreLocalVentas(){return nombreLocalVentas;}
-	public Long getIdEstante(){return idEstante;}
-	
-	public void setNombreLocalVentas(String nombreLocalVentas){this.nombreLocalVentas = nombreLocalVentas;}
-	public void setNombreEstante(Long idEstante){this.idEstante = idEstante;}
 
 }

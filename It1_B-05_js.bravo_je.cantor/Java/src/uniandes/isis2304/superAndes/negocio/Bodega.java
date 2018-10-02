@@ -3,17 +3,17 @@ package uniandes.isis2304.superAndes.negocio;
 /**
  * Clase para modelar el concepto BODEGA del negocio de SuperAndes.
  *
- * @author Juan Sebasti�n Bravo
+ * @author Juan Sebastián Bravo
  */
 public class Bodega extends Almacenamiento {
 
 	/* ****************************************************************
-	 * 			M�todos
+	 * 			Métodos
 	 *****************************************************************/
 
 	/**
-     * Constructor sin par�metros por defecto
-     */
+	 * Constructor sin parámetros por defecto
+	 */
 	public Bodega()
 	{
 		super();
@@ -23,13 +23,15 @@ public class Bodega extends Almacenamiento {
 	 * Constructor con valores.
 	 * @param idAlmacenamiento - El id de la bodega.
 	 * @param cantidadProductos - La cantidad de productos que posee la bodega.
-	 * @param capacidadPeso - El peso m�ximo que soporta la bodega en gr.
-	 * @param capacidadVolumen - El volumen m�ximo que soporta la bodega en cm3.
+	 * @param capacidadPeso - El peso máximo que soporta la bodega en gr.
+	 * @param capacidadVolumen - El volumen máximo que soporta la bodega en cm3.
+	 * @param nombreSucursal - El nombre de la sucursal a la cual pertenece la bodega.
+	 * @param direccionSucursal - La dirección de la sucursal a la cual pertenece la bodega.
+	 * @param ciudadSucursal - La ciudad de la sucursal a la cual pertenece la bodega.
 	 */
-
-	public Bodega (long idAlmacenamiento, int cantidadProductos, double capacidadPeso, double capacidadVolumen)
+	public Bodega (long idAlmacenamiento, int cantidadProductos, double capacidadPeso, double capacidadVolumen, String nombreSucursal, String direccionSucursal, String ciudadSucursal)
 	{
-		super(idAlmacenamiento, cantidadProductos, capacidadPeso, capacidadVolumen);
+		super(idAlmacenamiento, cantidadProductos, capacidadPeso, capacidadVolumen, nombreSucursal, direccionSucursal, ciudadSucursal);
 	}
 
 

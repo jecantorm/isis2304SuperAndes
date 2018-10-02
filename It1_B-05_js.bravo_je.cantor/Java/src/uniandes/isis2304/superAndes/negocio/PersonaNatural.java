@@ -1,35 +1,93 @@
 package uniandes.isis2304.superAndes.negocio;
 
-public class PersonaNatural extends Cliente{
+/**
+ *  Clase para modelar el concepto PERSONA_NATURAL del negocio de SuperAndes.
+ *
+ * @author Juan Sebastián Bravo
+ */
+
+public class PersonaNatural extends Cliente {
 	
+
+	/* ****************************************************************
+	 * 			Atributos
+	 *****************************************************************/
+
+	/**
+	 * El número de identificación de la persona natural.
+	 */
 	private String numeroIdentificacion;
 	
-	private String tipoIdentificacion;
+	/**
+	 * El tipo de identificación de la persona natural.
+	 */
+	private String tipoDocumento;
 	
+	/* ****************************************************************
+	 * 			Métodos 
+	 *****************************************************************/
+
+	/**
+	 * Constructor sin parámetros por defecto
+	 */
 	public PersonaNatural()
 	{
 		super();
-		numeroIdentificacion = "";
-		tipoIdentificacion = "";
+		this.setNumeroIdentificacion("");
+		this.setTipoDocumento("");
 	}
-	
-	public PersonaNatural(String nombre, String correo, int puntosFidelizacion, String documento, String tipoDocumento)
+
+	/**
+	 * Constructor con valores.
+	 * @param nombre - El nombre de la persona natural.
+	 * @param correo - El correo único de la persona natural.
+	 * @param puntosFidelizacion - La cantidad de puntos de fidelización de la persona natural.
+	 * @param numeroIdentificacion - El número de identificación de la persona natural.
+	 * @param tipoDocumento - El tipo de identificación de la persona natural.
+	 */
+	public PersonaNatural(String nombre, String correo, int puntosFidelizacion, String numeroIdentificacion, String tipoDocumento)
 	{
-		super(nombre,correo,puntosFidelizacion);
-		this.numeroIdentificacion = documento;
-		this.tipoIdentificacion = tipoDocumento;
+		super(nombre, correo, puntosFidelizacion);
+		this.setNumeroIdentificacion(numeroIdentificacion);
+		this.setTipoDocumento(tipoDocumento);
+	}
+
+	/**
+	 * Retorna el número de identificación de la persona natural.
+	 * 
+	 * @return El número de identificación de la persona natural.
+	 */
+	public String getNumeroIdentificacion() {
+		return numeroIdentificacion;
+	}
+
+	/**
+	 * Asigna el número de identificación de la persona natural.
+	 * 
+	 * @param numeroIdentificacion - El número de identificación de la persona natural.
+	 */
+	public void setNumeroIdentificacion(String numeroIdentificacion) {
+		this.numeroIdentificacion = numeroIdentificacion;
+	}
+
+	/**
+	 * Retorna el tipo de documento de la persona natural.
+	 * 
+	 * @return El tipo de documento de la persona natural.
+	 */
+	public String getTipoDocumento() {
+		return tipoDocumento;
+	}
+
+	/**
+	 * Asigna el tipo de documento de la persona natural.
+	 * 
+	 * @param tipoDocumento - El tipo de documento de la persona natural.
+	 */
+	public void setTipoDocumento(String tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
 	}
 	
-	public String getNombre(){return super.getNombre();}
-	public String getCorreo(){return super.getCorreo();}
-	public int getPuntosFidelizacion(){return super.getPuntosFidelizacion();}
-	public String getDocumento(){return numeroIdentificacion;}
-	public String getTipoDocumento(){return tipoIdentificacion;}
 	
-	public void setNombre(String nombre){super.setNombre(nombre);}
-	public void setCorreo(String correo){super.setCorreo(correo);}
-	public void setPuntosFidelizacion(int puntosFidelizacion){super.setPuntosFidelizacion(puntosFidelizacion);}
-	public void setDocumento(String documento){ this.numeroIdentificacion = documento;}
-	public void setTipoDocumento(String tipoDocumento){this.numeroIdentificacion = tipoDocumento;}
 
 }

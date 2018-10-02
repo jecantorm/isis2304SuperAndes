@@ -1,40 +1,86 @@
 package uniandes.isis2304.superAndes.negocio;
 
-public class Empresa extends Cliente{
-	
-	private String nit;
-	
+/**
+ * Clase para modelar el concepto EMPRESA del negocio de SuperAndes.
+ *
+ * @author Juan Sebastián Bravo
+ */
+public class Empresa extends Cliente {
+
+
+	/* ****************************************************************
+	 * 			Atributos
+	 *****************************************************************/
+
+	/**
+	 * El nit ÚNICO de la empresa.
+	 */
+	private int nit;
+
+	/**
+	 * La dirección de la empresa.
+	 */
 	private String direccion;
-	
-	private String correo;
-	
+
+	/* ****************************************************************
+	 * 			Métodos 
+	 *****************************************************************/
+	/**
+	 * Constructor sin parámetros por defecto
+	 */
 	public Empresa()
 	{
 		super();
-		nit = "";
-		direccion = "";
-		correo = "";
+		this.setNit(0);
+		this.setDireccion("");
+
 	}
-	
-	public Empresa(String nombre, String correo, int puntosFidelizacion, String documento, String nit, String direccion)
+	/**
+	 * Constructor con valores.
+	 * @param nombre - El nombre de la empresa.
+	 * @param correo - El correo único de la empresa.
+	 * @param puntosFidelizacion - La cantidad de puntos de fidelización de la empresa.
+	 * @param nit - El nit único de la empresa.
+	 * @param direccion - La dirección de la empresa.
+	 */
+	public Empresa(String nombre, String correo, int puntosFidelizacion, int nit, String direccion)
 	{
 		super(nombre,correo,puntosFidelizacion);
-		this.direccion = direccion;
-		this.nit = nit;
-		this.correo = correo;
+		this.setDireccion (direccion);
+		this.setNit (nit);
 	}
-	
-	public String getNombre(){return super.getNombre();}
-	public String getCorreo(){return super.getCorreo();}
-	public int getPuntosFidelizacion(){return super.getPuntosFidelizacion();}
-	public String getDireccion(){return direccion;}
-	public String getNIT(){return nit;}
-	
-	
-	public void setNombre(String nombre){super.setNombre(nombre);}
-	public void setCorreo(String correo){super.setCorreo(correo);}
-	public void setPuntosFidelizacion(int puntosFidelizacion){super.setPuntosFidelizacion(puntosFidelizacion);}
-	public void setDocumento(String direccion){ this.direccion = direccion;}
-	public void setNIT(String nit){this.nit = nit;}
+	/**
+	 * Retorna el nit de la empresa.
+	 * 
+	 * @return El nit de la empresa.
+	 */
+	public int getNit() {
+		return nit;
+	}
+	/**
+	 * Asigna el nit de la empresa.
+	 * 
+	 * @param nit - El nit de la empresa.
+	 */
+	public void setNit(int nit) {
+		this.nit = nit;
+	}
+	/**
+	 * Retorna la dirección de la empresa.
+	 * 
+	 * @return La dirección de la empresa.
+	 */
+	public String getDireccion() {
+		return direccion;
+	}
+	/**
+	 * Asigna la dirección de la empresa.
+	 * 
+	 * @param direccion - La dirección de la empresa.
+	 */
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
 
 }

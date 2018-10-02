@@ -1,57 +1,123 @@
 package uniandes.isis2304.superAndes.negocio;
 
+/**
+ * Clase para modelar el concepto SUCURSAL del negocio de SuperAndes.
+ *
+ * @author Juan Sebastián Bravo
+ */
 public class Sucursal {
-	
-	private String direccion;
-	
+
+	/* ****************************************************************
+	 * 			Atributos
+	 *****************************************************************/
+
+	/**
+	 * El nombre de la sucursal.
+	 */
 	private String nombre;
 	
+	/**
+	 * La dirección dónde se ubica la sucursal.
+	 */
+	private String direccion;
+
+	/**
+	 * La ciudad dónde se ubica la sucursal.
+	 */
 	private String ciudad;
-	
-	private double reordenProducto;
-	
-	private double capacidad;
-	
-	private String idBodega;
-	
-	private String nombreLocalVentas;
-	
+
+	/**
+	 * El identificador del local asociado a la sucursal.
+	 */
+	private long idLocalVentas;
+
+	/* ****************************************************************
+	 * 			Métodos
+	 *****************************************************************/
+
+	/**
+	 * Constructor sin parámetros por defecto
+	 */
 	public Sucursal()
 	{
-		this.direccion = "";
-		this.nombre = "";
-		this.ciudad = "";
-		this.reordenProducto =  0.0;
-		this.capacidad = 0.0;
-		this.idBodega = "";
-		this.nombreLocalVentas = "";
+		this.setNombre("");
+		this.setDireccion("");
+		this.setCiudad("");
+		this.setIdLocalVentas(0);
 	}
-	
-	public Sucursal(String pDireccion, String pNombre, String pCiudad, double pReordenProducto, double pCapacidad, String pIdBodega, String pLocalVentas)
+
+	/**
+	 * Constructor con valores.
+	 * @param nombre - El nombre de la sucursal.
+	 * @param direccion - La dirección dónde se ubica la sucursal.
+	 * @param ciudad - La ciudad dónde se ubica la sucursal.
+	 * @param idLocalVentas - El identificador del local asociado a la sucursal.
+	 */
+	public Sucursal(String nombre, String direccion, String ciudad, long idLocalVentas)
 	{
-		direccion = pDireccion;
-		nombre = pNombre;
-		ciudad = pCiudad;
-		reordenProducto = pReordenProducto;
-		capacidad = pCapacidad;
-		idBodega = pIdBodega;
-		nombreLocalVentas = pLocalVentas;
+		this.setNombre(nombre);
+		this.setDireccion(direccion);
+		this.setCiudad(ciudad);
+		this.setIdLocalVentas(idLocalVentas);
 	}
-	
-	public String getDireccion(){return direccion;}
-	public String getNombre(){return nombre;}
-	public String getCiudad(){return ciudad;}
-	public double getReordenProducto(){return reordenProducto;}
-	public double getCapacidad(){return capacidad;}
-	public String getIdBodega(){return idBodega;}
-	public String getNombreLocalVentas(){return nombreLocalVentas;}
-	
-	public void setDireccion(String direccion){this.direccion = direccion;}
-	public void setNombre(String nombre){this.nombre = nombre;}
-	public void setCiudad(String ciudad){this.ciudad = ciudad;}
-	public void setReordenProducto(double reOrdenProducto){this.reordenProducto= reOrdenProducto;}
-	public void setCapacidad(double capacidad){this.capacidad = capacidad;}
-	public void setIdBodega(String idBodega){this.idBodega = idBodega;}
-	public void setNombreLocalVentas(String nombreLocalVentas){this.nombreLocalVentas = nombreLocalVentas;}
+
+	/**
+	 * @return the direccion
+	 */
+	public String getDireccion() {
+		return direccion;
+	}
+
+	/**
+	 * @param direccion the direccion to set
+	 */
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	/**
+	 * @return the ciudad
+	 */
+	public String getCiudad() {
+		return ciudad;
+	}
+
+	/**
+	 * @param ciudad the ciudad to set
+	 */
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
+	}
+
+	/**
+	 * @return the idLocalVentas
+	 */
+	public long getIdLocalVentas() {
+		return idLocalVentas;
+	}
+
+	/**
+	 * @param idLocalVentas the idLocalVentas to set
+	 */
+	public void setIdLocalVentas(long idLocalVentas) {
+		this.idLocalVentas = idLocalVentas;
+	}
+
+
+
 
 }

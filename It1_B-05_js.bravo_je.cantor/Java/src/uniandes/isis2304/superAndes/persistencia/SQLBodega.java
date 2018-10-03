@@ -51,7 +51,7 @@ class SQLBodega {
 
 	public long eliminarSucursalPorNombre (PersistenceManager pm, String nombreSucursal)
 	{
-        Query q = pm.newQuery(SQL, "DELETE FROM " + psa.darTablaSucursal () + " WHERE nombreSucursal = ?");
+        Query q = pm.newQuery(SQL, "DELETE FROM " + psa.darTablaBodega () + " WHERE nombreSucursal = ?");
         q.setParameters(nombreSucursal);
         return (long) q.executeUnique();
 	}
@@ -59,7 +59,7 @@ class SQLBodega {
 	
 	public Sucursal darSucursalPorNombre (PersistenceManager pm, String nombreSucursal) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + psa.darTablaSucursal () + " WHERE nombreSucursal = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + psa.darTablaBodega () + " WHERE nombreSucursal = ?");
 		q.setResultClass(Sucursal.class);
 		q.setParameters(nombreSucursal);
 		return (Sucursal) q.executeUnique();
@@ -68,9 +68,16 @@ class SQLBodega {
 	
 	public List<Bodega> darSucursalesPorCiudad (PersistenceManager pm, String localVentas) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + psa.darTablaSucursal () + " WHERE localVentas = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + psa.darTablaBodega () + " WHERE localVentas = ?");
 		q.setResultClass(Bodega.class);
 		q.setParameters(localVentas);
+		return (List<Bodega>) q.executeList();
+	}
+	
+	public List<Bodega> darBodegas (PersistenceManager pm) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + psa.darTablaBodega ());
+		q.setResultClass(Bodega.class);
 		return (List<Bodega>) q.executeList();
 	}
 	

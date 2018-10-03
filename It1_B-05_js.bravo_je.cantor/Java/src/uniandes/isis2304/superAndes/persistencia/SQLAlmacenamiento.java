@@ -1,6 +1,7 @@
 package uniandes.isis2304.superAndes.persistencia;
 
-public class SQLPedidoProductos {
+class SQLAlmacenamiento {
+	
 	
 	/* ****************************************************************
 	 * 			Constantes
@@ -26,7 +27,7 @@ public class SQLPedidoProductos {
 	 * Constructor
 	 * @param pp - El Manejador de persistencia de la aplicación
 	 */
-	public SQLPedidoProductos (PersistenciaSuperAndes psa)
+	public SQLAlmacenamiento (PersistenciaSuperAndes psa)
 	{
 		this.psa = psa;
 	}

@@ -1,5 +1,8 @@
 package uniandes.isis2304.superAndes.negocio;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 import com.google.gson.JsonObject;
@@ -51,6 +54,98 @@ public class SuperAndes {
 	{
 		psa.cerrarUnidadPersistencia ();
 	}
+	
+	/* ****************************************************************
+	 * 			Métodos para manejar los CLIENTES
+	 *****************************************************************/
+	/**
+	 * Adiciona de manera persistente un cliente 
+	 * Adiciona entradas al log de la aplicación
+	 * @param nombre - El nombre del tipo cliente
+	 * @return El objeto TipoBebida adicionado. null si ocurre alguna Excepción
+	 */
+	public Cliente adicionarCliente (String nombre, String correo)
+	{
+        log.info ("Adicionando Cliente: " + nombre);
+        Cliente cliente = psa.adicionarCliente (nombre,correo);		
+        log.info ("Adicionando Cliente: " + cliente);
+        return cliente;
+	}
+	
+	/**
+	 * Elimina un cliente por su nombre
+	 * Adiciona entradas al log de la aplicación
+	 * @param nombre - El nombre del cliente a eliminar
+	 * @return El número de tuplas eliminadas
+	 */
+	public long eliminarClientePorNombre (String nombre)
+	{
+		log.info ("Eliminando Tipo de bebida por nombre: " + nombre);
+        long resp = psa.eliminarClientePorNombre (nombre);		
+        log.info ("Eliminando Cliente por nombre: " + resp + " tuplas eliminadas");
+        return resp;
+	}
+	
+	/**
+	 * Elimina un tipo de bebida por su identificador
+	 * Adiciona entradas al log de la aplicación
+	 * @param idTipoBebida - El id del tipo de bebida a eliminar
+	 * @return El número de tuplas eliminadas
+	 */
+	public long eliminarClientePorCorreo (String correo)
+	{
+		log.info ("Eliminando Cliente por correo: " + correo);
+        long resp = psa.eliminarClientePorCorreo (correo);		
+        log.info ("Eliminando Cliente por correo: " + resp + " tuplas eliminadas");
+        return resp;
+	}
+	
+	/**
+	 * Encuentra todos los clientes en Parranderos
+	 * Adiciona entradas al log de la aplicación
+	 * @return Una lista de objetos Clientes con todos los tipos de bebida que conoce la aplicación, llenos con su información básica
+	 */
+	public List<Cliente> darClientes ()
+	{
+		System.out.println ("Consultando Clientes");
+        List<Cliente> clientes = psa.darClientes ();	
+        System.out.println ("Consultando Clientes: " + clientes.size() + " existentes");
+        return clientes;
+	}
+
+
+	/**
+	 * Encuentra el tipos de bebida en Parranderos con el nombre solicitado
+	 * Adiciona entradas al log de la aplicación
+	 * @param nombre - El nombre de la bebida
+	 * @return Un objeto TipoBebida con el tipos de bebida de ese nombre que conoce la aplicación, 
+	 * lleno con su información básica
+	 */
+	public Cliente darClientePorNombre (String nombre)
+	{
+		log.info ("Buscando Cliente por nombre: " + nombre);
+		List<Cliente> tb = psa.darClientesPorNombre (nombre);
+		return !tb.isEmpty () ? tb.get (0) : null;
+	}
+	
+	/**
+	 * Encuentra todos los tipos de bebida en Parranderos
+	 * Adiciona entradas al log de la aplicación
+	 * @return Una lista de objetos TipoBebida con todos los tipos de bebida que conoce la aplicación, llenos con su información básica
+	 */
+	public List<Bodega> darBodegas ()
+	{
+		log.info ("Consultando Bodegas");
+        List<Bodega> bodegas = psa.darBodegas ();	
+        log.info ("Consultando Tipos de bebida: " + bodegas.size() + " existentes");
+        return bodegas;
+	}
+	
+	/**
+	 * Encuentra todos los tipos de bebida en Parranderos
+	 * Adiciona entradas al log de la aplicación
+	 * @return Una lista de objetos TipoBebida con todos los tipos de bebida que conoce la aplicación, llenos con su información básica
+	 */
 	
 	/* ****************************************************************
 	 * 			Métodos para administración

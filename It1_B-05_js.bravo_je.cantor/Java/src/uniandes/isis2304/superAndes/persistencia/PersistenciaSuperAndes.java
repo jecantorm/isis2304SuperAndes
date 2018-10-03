@@ -15,6 +15,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import uniandes.isis2304.superAndes.negocio.Bodega;
+import uniandes.isis2304.superAndes.negocio.Cliente;
+
 
 
 public class PersistenciaSuperAndes {
@@ -53,7 +56,10 @@ public class PersistenciaSuperAndes {
 	
 	/**
 	 * Atributo para el acceso a la tabla BODEGA de la base de datos
+	 * 
 	 */
+	private SQLAlmacenamiento sqlAlmacenamiento;
+	
 	private SQLBodega sqlBodega;
 	
 	private SQLEmpresa sqlEmpresa;
@@ -86,7 +92,6 @@ public class PersistenciaSuperAndes {
 	/**
 	 * Atributo para el acceso a la tabla VISITAN de la base de datos
 	 */
-	private SQLPedidoProductos sqlPedidoProductos;
 	
 	/**
 	 * Atributo para el acceso a la tabla BAR de la base de datos
@@ -127,19 +132,20 @@ public class PersistenciaSuperAndes {
 		
 		// Define los nombres por defecto de las tablas de la base de datos
 		tablas = new LinkedList<String> ();
-		tablas.add("SuperAndes_sequence");
-		tablas.add ("BODEGA");         
-		tablas.add ("CLIENTE");        
-		tablas.add ("EMPRRESA");       
-		tablas.add ("ESTANTE");        
-		tablas.add ("FACTURA");        
-		tablas.add ("LOCALVENTAS");    
-		tablas.add ("PEDIDO");         
-		tablas.add ("PEDIDOPRODUCTOS");
-        tablas.add ("PERSONANATURAL"); 
-	    tablas.add ("PRODUCTO");       
-	    tablas.add ("PROMOCION");
-	    tablas.add ("SUCURSAL");        
+		tablas.add ("superAndes_sequence"); //0
+		tablas.add ("ALMACENAMIENTO"); //1
+		tablas.add ("BODEGA"); //2        
+		tablas.add ("CLIENTE");//3        
+		tablas.add ("EMPRESA");//4       
+		tablas.add ("ESTANTE");// 5        
+		tablas.add ("FACTURA");// 6        
+		tablas.add ("LOCAL_VENTAS"); //7   
+		tablas.add ("PEDIDO");//8         
+        tablas.add ("PERSONANATURAL"); //9 
+	    tablas.add ("PRODUCTO"); //10      
+	    tablas.add ("PROMOCION"); //11
+	    tablas.add ("PROVEEDOR"); //12
+	    tablas.add ("SUCURSAL"); //13       
 	
 	}
 
@@ -151,6 +157,11 @@ public class PersistenciaSuperAndes {
 	{
 		crearClasesSQL ();
 		tablas = leerNombresTablas (tableConfig);
+		
+		for (String e : tablas)
+		{
+			System.out.println(e);
+		}
 		
 		String unidadPersistencia = tableConfig.get ("unidadPersistencia").getAsString ();
 		log.trace ("Accediendo unidad de persistencia: " + unidadPersistencia);
@@ -225,14 +236,22 @@ public class PersistenciaSuperAndes {
 		}
 		
 		return resp;
-	}	
+	}
+	
+	/**
+	 * @return La cadena de caracteres con el nombre de la tabla de Bodega de superandes
+	 */                                                                       
+	public String darTablaAlmacenamiento ()                                           
+	{                                                                         
+		return tablas.get (1);                                                
+	}      
 
 	/**
 	 * @return La cadena de caracteres con el nombre de la tabla de Bodega de superandes
 	 */                                                                       
 	public String darTablaBodega ()                                           
 	{                                                                         
-		return tablas.get (1);                                                
+		return tablas.get (2);                                                
 	}                                                                         
                                                                               
 	/**                                                                       
@@ -240,7 +259,7 @@ public class PersistenciaSuperAndes {
 	 */                                                                       
 	public String darTablaCliente ()                                          
 	{                                                                         
-		return tablas.get (2);                                                
+		return tablas.get (3);                                                
 	}                                                                         
                                                                               
 	/**                                                                       
@@ -248,7 +267,7 @@ public class PersistenciaSuperAndes {
 	 */                                                                       
 	public String darTablaEmpresa ()                                          
 	{                                                                         
-		return tablas.get (3);                                                
+		return tablas.get (4);                                                
 	}                                                                         
                                                                               
 	/**                                                                       
@@ -256,7 +275,7 @@ public class PersistenciaSuperAndes {
 	 */
 	public String darTablaEstante ()
 	{
-		return tablas.get (4);
+		return tablas.get (5);
 	}
 
 	/**                                                                      
@@ -264,7 +283,7 @@ public class PersistenciaSuperAndes {
 	 */                                                                    
 	public String darTablaFactura ()                                       
 	{                                                                      
-		return tablas.get (5);                                             
+		return tablas.get (6);                                             
 	}                                                                      
                                                                            
 	/**                                                                    
@@ -272,7 +291,7 @@ public class PersistenciaSuperAndes {
 	 */                                                                       
 	public String darTablaLocalVentas ()                                      
 	{                                                                         
-		return tablas.get (6);                                                
+		return tablas.get (7);                                                
 	}                                                                         
                                                                               
 	/**                                                                       
@@ -280,16 +299,9 @@ public class PersistenciaSuperAndes {
 	 */                                                                        
 	public String darTablaPedidos ()                                           
 	{                                                                          
-		return tablas.get (7);                                                 
+		return tablas.get (8);                                                 
 	}                                                                          
-	                                                                           
-	/**                                                                        
-	 * @return La cadena de caracteres con el nombre de la tabla de PedidoProductos de superAndes
-	 */                                                                       
-	public String darTablaPedidoProductos ()                                  
-	{                                                                         
-		return tablas.get (8);                                                
-	}                                                                         
+	                                                                                                                                                 
                                                                               
 	/**                                                                       
 	 * @return La cadena de caracteres con el nombre de la tabla de PersonaNatural de superAndes
@@ -313,14 +325,22 @@ public class PersistenciaSuperAndes {
 	public String darTablaPromocion ()                                        
 	{                                                                         
 		return tablas.get (11);                                               
-	}                                                                         
+	}    
+	
+	/**                                                                         
+	 * @return La cadena de caracteres con el nombre de la tabla de Promocion de superAndese
+	 */                                                                       
+	public String darTablaProveedor ()                                        
+	{                                                                         
+		return tablas.get (12);                                               
+	}
                                                                               
 	/**                                                                       
 	 * @return La cadena de caracteres con el nombre de la tabla de Sucursal de superAndes 
 	 */
 	public String darTablaSucursal ()
 	{
-		return tablas.get (12);
+		return tablas.get (13);
 	}
 	
 	/**
@@ -328,6 +348,7 @@ public class PersistenciaSuperAndes {
 	 */
 	private void crearClasesSQL ()
 	{
+		sqlAlmacenamiento = new SQLAlmacenamiento(this);
 		sqlBodega = new SQLBodega(this);
 		sqlCliente = new SQLCliente(this);
 		sqlEmpresa = new SQLEmpresa(this);
@@ -335,12 +356,23 @@ public class PersistenciaSuperAndes {
 		sqlFactura = new SQLFactura(this);
 		sqlLocalVentas = new SQLLocalVentas (this);
 		sqlPedido = new SQLPedido(this);		
-		sqlPedidoProductos = new SQLPedidoProductos(this);
 		sqlPersonaNatural = new SQLPersonaNatural (this);
 		sqlProducto = new SQLProducto(this);		
 		sqlPromocion = new SQLPromocion(this);
 		sqlSucursal = new SQLSucursal(this);
 	}
+	
+	/**
+	 * Transacción para el generador de secuencia de SuperAndes
+	 * Adiciona entradas al log de la aplicación
+	 * @return El siguiente número del secuenciador de SuperAndes
+	 */
+	private long nextval ()
+	{
+        long resp = sqlUtil.nextval (pmf.getPersistenceManager());
+        System.out.println ("Generando secuencia: " + resp);
+        return resp;
+    }
 
 	/**
 	 * @return La cadena de caracteres con el nombre del secuenciador de parranderos
@@ -349,6 +381,154 @@ public class PersistenciaSuperAndes {
 	{
 		return tablas.get (0);
 	}
+	
+
+	/* ****************************************************************
+	 * 			Métodos para manejar los CLIENTES
+	 *****************************************************************/
+
+	/**
+	 * Método que inserta, de manera transaccional, una tupla en la tabla Clientes
+	 * Adiciona entradas al log de la aplicación
+	 * @param nombre - El nombre del tipo de bebida
+	 * @return El objeto TipoBebida adicionado. null si ocurre alguna Excepción
+	 */
+	public Cliente adicionarCliente(String nombre, String correo)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            //long idCliente = nextval ();
+            long tuplasInsertadas = sqlCliente.adicionarCliente(pm, correo, nombre,0);
+            tx.commit();
+            
+            log.trace ("Inserción de cliente: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Cliente (nombre, correo,0);
+        }
+        catch (Exception e)
+        {
+        	e.printStackTrace();
+        	System.out.println ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+
+	/**
+	 * Método que elimina, de manera transaccional, una tupla en la tabla Cliente, dado el nombre del tipo de bebida
+	 * Adiciona entradas al log de la aplicación
+	 * @param nombre - El nombre del tipo de bebida
+	 * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción
+	 */
+	public long eliminarClientePorNombre (String nombre) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlCliente.eliminarClientePorNombre(pm, nombre);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+
+	/**
+	 * Método que elimina, de manera transaccional, una tupla en la tabla Cliente, dado el identificador del tipo de bebida
+	 * Adiciona entradas al log de la aplicación
+	 * @param idTipoBebida - El identificador del tipo de bebida
+	 * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción
+	 */
+	public long eliminarClientePorCorreo (String correo) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlCliente.eliminarClientePorCorreo(pm, correo);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+
+	/**
+	 * Método que consulta todas las tuplas en la tabla Clientes
+	 * @return La lista de objetos TipoBebida, construidos con base en las tuplas de la tabla TIPOBEBIDA
+	 */
+	public List<Cliente> darClientes()
+	{
+		return sqlCliente.darClientes (pmf.getPersistenceManager());
+	}
+ 
+	/**
+	 * Método que consulta todas las tuplas en la tabla Cliente que tienen el nombre dado
+	 * @param nombre - El nombre del tipo de bebida
+	 * @return La lista de objetos TipoBebida, construidos con base en las tuplas de la tabla TIPOBEBIDA
+	 */
+	public List<Cliente> darClientesPorNombre (String nombre)
+	{
+		return sqlCliente.darClientePorNombre (pmf.getPersistenceManager(), nombre);
+	}
+ 
+	/**
+	 * Método que consulta todas las tuplas en la tabla TipoBebida con un identificador dado
+	 * @param idTipoBebida - El identificador del tipo de bebida
+	 * @return El objeto TipoBebida, construido con base en las tuplas de la tabla TIPOBEBIDA con el identificador dado
+	 */
+	public Cliente darClientePorCorreo (String correo)
+	{
+		return sqlCliente.darClientePorCorreo (pmf.getPersistenceManager(), correo);
+	}
+	
+	/**
+	 * Método que consulta todas las tuplas en la tabla TipoBebida
+	 * @return La lista de objetos TipoBebida, construidos con base en las tuplas de la tabla TIPOBEBIDA
+	 */
+	public List<Bodega> darBodegas ()
+	{
+		return sqlBodega.darBodegas (pmf.getPersistenceManager());
+	}
+	
+
 	
 	/**
 	 * Elimina todas las tuplas de todas las tablas de la base de datos de SuperAndes

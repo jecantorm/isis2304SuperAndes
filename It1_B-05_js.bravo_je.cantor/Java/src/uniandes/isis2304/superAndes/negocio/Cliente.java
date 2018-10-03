@@ -6,7 +6,7 @@ package uniandes.isis2304.superAndes.negocio;
  * @author Juan Sebastián Bravo
  */
 
-public abstract class Cliente {
+public class Cliente {
 
 
 	/* ****************************************************************
@@ -26,7 +26,7 @@ public abstract class Cliente {
 	/**
 	 * Los puntos de fidelización del cliente.
 	 */
-	protected int puntosFidelizacion;
+	protected int puntos_Fidelizacion;
 
 	/* ****************************************************************
 	 * 			Métodos 
@@ -90,7 +90,7 @@ public abstract class Cliente {
 	 * @return La cantidad de puntos de fidelización del cliente.
 	 */
 	public int getPuntosFidelizacion() {
-		return puntosFidelizacion;
+		return puntos_Fidelizacion;
 	}
 	/**
 	 * Asigna la cantidad de puntos de fidelización del cliente.
@@ -98,7 +98,7 @@ public abstract class Cliente {
 	 * @param puntosFidelizacion - La cantidad de puntos de fidelización del cliente.
 	 */
 	public void setPuntosFidelizacion(int puntosFidelizacion) {
-		this.puntosFidelizacion = puntosFidelizacion;
+		this.puntos_Fidelizacion = puntosFidelizacion;
 	}
 
 

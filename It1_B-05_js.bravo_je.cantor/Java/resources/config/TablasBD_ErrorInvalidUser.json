@@ -3,18 +3,19 @@
 	"unidadPersistencia": "SuperAndesErrorUser",
 	"tablas":
 	[
-		"SuperAndes_sequence",
+		"superAndes_sequence",
+		"X_ALMACENAMIENTO",
 		"X_BODEGA",
-		"XCLIENTE",
+		"X_CLIENTE",
 		"X_EMPRRESA",
 		"X_ESTANTE",
 		"X_FACTURA",
-		"X_LOCALVENTAS",
+		"X_LOCAL_VENTAS",
 		"X_PEDIDO",
-		"X_PEDIDOPRODUCTOS",
 		"X_PERSONANATURAL",
 		"X_PRODUCTO",
 		"X_PROMOCION",
+		"X_PROVEEDOR",
 		"X_SUCURSAL"
 	]
 }

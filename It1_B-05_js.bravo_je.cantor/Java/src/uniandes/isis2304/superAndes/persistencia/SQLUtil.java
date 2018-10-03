@@ -57,6 +57,7 @@ public class SQLUtil {
 	 */
 	public long [] limpiarSuperAndes (PersistenceManager pm)
 	{
+		Query qAlmacenamiento = pm.newQuery(SQL,"DELETE FROM" + psa.darTablaAlmacenamiento());
         Query qBodega = pm.newQuery(SQL, "DELETE FROM " + psa.darTablaBodega ());          
         Query qCliente = pm.newQuery(SQL, "DELETE FROM " + psa.darTablaCliente ());
         Query qEmpresa = pm.newQuery(SQL, "DELETE FROM " + psa.darTablaEmpresa ());
@@ -64,12 +65,13 @@ public class SQLUtil {
         Query qFactura = pm.newQuery(SQL, "DELETE FROM " + psa.darTablaFactura ());
         Query qLocalVentas = pm.newQuery(SQL, "DELETE FROM " + psa.darTablaLocalVentas ());
         Query qPedido = pm.newQuery(SQL, "DELETE FROM " + psa.darTablaPedidos ());
-        Query qPedidoProductos = pm.newQuery(SQL, "DELETE FROM " + psa.darTablaPedidoProductos ());
         Query qPersonaNatural = pm.newQuery(SQL, "DELETE FROM " + psa.darTablaPersonaNatural ());
         Query qProducto = pm.newQuery(SQL, "DELETE FROM " + psa.darTablaProducto ());
         Query qPromocion = pm.newQuery(SQL, "DELETE FROM " + psa.darTablaPromocion ());
+        Query qProveedor = pm.newQuery(SQL, "DELETE FROM " + psa.darTablaProveedor ());
         Query qSucursal = pm.newQuery(SQL, "DELETE FROM " + psa.darTablaSucursal ());
 
+        long almacenamientoEliminados = (long) qAlmacenamiento.executeUnique();
         long bodegaEliminados = (long) qBodega.executeUnique ();
         long clienteEliminados = (long) qCliente.executeUnique ();
         long empresaEliminadas = (long) qEmpresa.executeUnique ();
@@ -77,23 +79,24 @@ public class SQLUtil {
         long facturaEliminados = (long) qFactura.executeUnique ();
         long localVentasEliminados = (long) qLocalVentas.executeUnique ();
         long pedidoEliminados = (long) qPedido.executeUnique ();
-        long pedidoProductoEliminados = (long) qPedidoProductos.executeUnique ();
         long personaNaturalEliminados = (long) qPersonaNatural.executeUnique ();
         long productoEliminados = (long) qProducto.executeUnique ();
         long promocionEliminados = (long) qPromocion.executeUnique ();
+        long proveedorEliminados = (long) qProveedor.executeUnique ();
         long sucursalEliminados = (long) qSucursal.executeUnique ();
         return new long[]
-        		{bodegaEliminados, 
+        		{almacenamientoEliminados,
+        		bodegaEliminados, 
         		clienteEliminados,
         		empresaEliminadas,
         		enstanteEliminados,
         		facturaEliminados,
         		localVentasEliminados,
-        		pedidoEliminados, 
-        		pedidoProductoEliminados,		
+        		pedidoEliminados, 	
         		personaNaturalEliminados,		
         		productoEliminados,		
-        		promocionEliminados,		
+        		promocionEliminados,
+        		proveedorEliminados,
         		sucursalEliminados};
 	}
 

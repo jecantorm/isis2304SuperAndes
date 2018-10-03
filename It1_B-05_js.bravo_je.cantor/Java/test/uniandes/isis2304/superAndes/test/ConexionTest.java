@@ -113,7 +113,7 @@ public class ConexionTest {
 			log.info ("La causa es: " + e.getCause ().toString ());
 
 			String msg = "Prueba de base de datos inaccesible correcta.\n";
-			msg += "Revise el log de parranderos y el de datanucleus para conocer el detalle de la excepción";
+			msg += "Revise el log de superAndes y el de datanucleus para conocer el detalle de la excepción";
 			System.out.println (msg);
 		}
     }
@@ -138,7 +138,7 @@ public class ConexionTest {
 			log.info ("La causa es: " + e.getCause ().toString ());
 
 			String msg = "Prueba de credenciales incorrectas correcta.\n";
-			msg += "Revise el log de parranderos y el de datanucleus para conocer el detalle de la excepción";
+			msg += "Revise el log de superAndes y el de datanucleus para conocer el detalle de la excepción";
 			System.out.println (msg);
 		}
     }
@@ -171,12 +171,12 @@ public class ConexionTest {
 		// Ahora si se puede probar si la tabla existe o no...
 		try
 		{
-			//superAndes.darPromociones ();
+			System.out.println(superAndes.darClientes().get(0).getNombre());
 			fail ("Debería fallar. La tabla consultada no existe en la BD");
 		}
 		catch (Exception e)
 		{
-//			e.printStackTrace();
+			e.printStackTrace();
 			log.info ("Prueba de tabla inexistente correcta. La excepción generada es: " + e.getClass ().getName ());
 			log.info ("La causa es: " + e.getCause ().toString ());
 

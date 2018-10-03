@@ -32,6 +32,11 @@ public class Promocion {
 	 * El nombre de la promoción.
 	 */
 	private String nombrePromocion;
+	
+	/**
+	 * La cantidad de productos que abarca la promoción.
+	 */
+	private int cantidadProductos;
 
 	/**
 	 * La fecha de inicio de la promoción.
@@ -185,6 +190,24 @@ public class Promocion {
 	 */
 	public void setFechaFinal(Date fechaFinal) {
 		this.fechaFinal = fechaFinal;
+	}
+
+	/**
+	 * Retorna la cantidad de productos que abarca la promoción.
+	 * 
+	 * @return La cantidad de productos que abarca la promoción.
+	 */
+	public int getCantidadProductos() {
+		return cantidadProductos;
+	}
+	
+	/**
+	 * Asigna la cantidad de productos que abarca la promoción.
+	 * 
+	 * @param cantidadProductos - La cantidad de productos que abarca la promoción.
+	 */
+	public void setCantidadProductos(int cantidadProductos) {
+		this.cantidadProductos = cantidadProductos;
 	}
 
 

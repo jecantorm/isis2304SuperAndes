@@ -17,6 +17,11 @@ public abstract class Almacenamiento {
 	protected long idAlmacenamiento;
 
 	/**
+	 * La categoría de los productos que almacena el almacenamiento. 
+	 */
+
+	protected String categoria;
+	/**
 	 * La capacidad volumétrica máxima del almacenamiento en cm3. 
 	 */
 
@@ -215,6 +220,25 @@ public abstract class Almacenamiento {
 	 */
 	public void setCiudadSucursal(String ciudadSucursal) {
 		this.ciudadSucursal = ciudadSucursal;
+	}
+
+	/**
+	 * Retorna la categoría de los productos que almacena el almacenamiento.
+	 * 
+	 *  @return La categoría de los productos que almacena el almacenamiento. 
+	 */
+	
+	public String getCategoria() {
+		return categoria;
+	}
+
+	/**
+	 * Asigna la categoría de los productos que almacena el almacenamiento.
+	 * 
+	 *  @param categoria - La categoría de los productos que almacena el almacenamiento. 
+	 */
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 
 }

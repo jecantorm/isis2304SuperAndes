@@ -7,6 +7,17 @@ package uniandes.isis2304.superAndes.negocio;
  */
 public class Bodega extends Almacenamiento {
 
+
+	/* ****************************************************************
+	 * 			Atributos
+	 *****************************************************************/
+
+	/**
+	 * El nombre único de la bodega.
+	 */
+	private String nombreBodega;
+	
+	
 	/* ****************************************************************
 	 * 			Métodos
 	 *****************************************************************/
@@ -14,13 +25,21 @@ public class Bodega extends Almacenamiento {
 	/**
 	 * Constructor sin parámetros por defecto
 	 */
+	public Bodega()
+	{
+		super();
+		this.setNombreBodega("");
+	}
 	
-	private String nombreBodega;
+	/**
+	 * Constructor con únicamente el nombre
+	 * @param nombreBodega - El nombre único de la bodega.
+	 */
 	
 	public Bodega(String nombreBodega)
 	{
 		super();
-		setNombreBodega(nombreBodega);
+		this.setNombreBodega(nombreBodega);
 	}
 
 	/**
@@ -32,12 +51,31 @@ public class Bodega extends Almacenamiento {
 	 * @param nombreSucursal - El nombre de la sucursal a la cual pertenece la bodega.
 	 * @param direccionSucursal - La dirección de la sucursal a la cual pertenece la bodega.
 	 * @param ciudadSucursal - La ciudad de la sucursal a la cual pertenece la bodega.
+	 * @param nombreBodega - El nombre único de la bodega.
 	 */
-	public Bodega (long idAlmacenamiento, int cantidadProductos, double capacidadPeso, double capacidadVolumen, String nombreSucursal, String direccionSucursal, String ciudadSucursal)
+	public Bodega (long idAlmacenamiento, int cantidadProductos, double capacidadPeso, double capacidadVolumen, String nombreSucursal, String direccionSucursal, String ciudadSucursal, String nombreBodega)
 	{
 		super(idAlmacenamiento, cantidadProductos, capacidadPeso, capacidadVolumen, nombreSucursal, direccionSucursal, ciudadSucursal);
+		this.setNombreBodega(nombreBodega);
 	}
-	public void setNombreBodega(String nombreBodega){this.nombreBodega = nombreBodega;}
+
+	/**
+	 * Retorna el nombre único de la bodega.
+	 * 
+	 * @return El nombre único de la bodega.
+	 */
+	public String getNombreBodega() {
+		return nombreBodega;
+	}
+
+	/**
+	 * Asigna el nombre único de la bodega.
+	 * 
+	 * @return El nombre único de la bodega.
+	 */
+	public void setNombreBodega(String nombreBodega) {
+		this.nombreBodega = nombreBodega;
+	}
 
 
 }

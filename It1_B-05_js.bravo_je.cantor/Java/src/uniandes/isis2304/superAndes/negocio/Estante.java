@@ -14,7 +14,12 @@ public class Estante extends Almacenamiento {
 	/**
 	 * El nivel de abastecimiento que tiene un estante de los productos.
 	 */
-	private double nivelDeAbastecimiento;
+	private double nivelAbastecimiento;
+	
+	/**
+	 * El nombre único del estante.
+	 */
+	private String nombreEstante;
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -27,6 +32,7 @@ public class Estante extends Almacenamiento {
 	{
 		super();
 		this.setNivelDeAbastecimiento(0.0);
+		this.setNombreEstante("");
 	}
 	/**
 	 * Constructor con valores.
@@ -50,16 +56,32 @@ public class Estante extends Almacenamiento {
 	 *
 	 * @return El id del abastecimiento.
 	 */
-	public double getNivelDeAbastecimiento() {
-		return nivelDeAbastecimiento;
+	public double getNivelAbastecimiento() {
+		return nivelAbastecimiento;
 	}
 	/**
 	 * Asigna el nivel de abastecimiento del estante.
 	 *
-	 * @param nivelDeAbastecimiento -  El nivel de abastecimiento del estante.
+	 * @param nivelAbastecimiento -  El nivel de abastecimiento del estante.
 	 */
-	public void setNivelDeAbastecimiento(double nivelDeAbastecimiento) {
-		this.nivelDeAbastecimiento = nivelDeAbastecimiento;
+	public void setNivelDeAbastecimiento(double nivelAbastecimiento) {
+		this.nivelAbastecimiento = nivelAbastecimiento;
+	}
+	/**
+	 * Retorna el nombre único del estante.
+	 *
+	 * @return El nombre único del estante.
+	 */
+	public String getNombreEstante() {
+		return nombreEstante;
+	}
+	/**
+	 * Asigna el nombre único del estante.
+	 *
+	 * @param nombreEstante - El nombre único del estante.
+	 */
+	public void setNombreEstante(String nombreEstante) {
+		this.nombreEstante = nombreEstante;
 	}
 
 }

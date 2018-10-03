@@ -5,6 +5,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import uniandes.isis2304.superAndes.negocio.Empresa;
 import uniandes.isis2304.superAndes.negocio.Sucursal;
 
 public class SQLSucursal {
@@ -14,7 +15,7 @@ public class SQLSucursal {
 	 *****************************************************************/
 	/**
 	 * Cadena que representa el tipo de consulta que se va a realizar en las sentencias de acceso a la base de datos
-	 * Se renombra ac� para facilitar la escritura de las sentencias
+	 * Se renombra acá para facilitar la escritura de las sentencias
 	 */
 	private final static String SQL = PersistenciaSuperAndes.SQL;
 
@@ -22,55 +23,96 @@ public class SQLSucursal {
 	 * 			Atributos
 	 *****************************************************************/
 	/**
-	 * El manejador de persistencia general de la aplicaci�n
+	 * El manejador de persistencia general de la aplicación
 	 */
 	private PersistenciaSuperAndes psa;
 
 	/* ****************************************************************
-	 * 			M�todos
+	 * 			M�todos
 	 *****************************************************************/
 	/**
 	 * Constructor
-	 * @param pp - El Manejador de persistencia de la aplicaci�n
+	 * @param psa - El Manejador de persistencia de la aplicación
 	 */
 	public SQLSucursal (PersistenciaSuperAndes psa)
 	{
 		this.psa = psa;
 	}
-	
-	public long adicionarSucursal (PersistenceManager pm, String nombreSucursal, String direccion, String ciudad, Long idBodega, String nombreLocalVentas,double reOrden, double capacidad) 
+	/**
+	 * -----------Requerimiento funcional 4B------------
+	 * Crea y ejecuta la sentencia SQL para adicionar una SUCURSAL a la base de datos de SuperAndes
+	 * @param pm - El manejador de persistencia.
+	 * @param nombre - El nombre de la sucursal.
+	 * @param direccion - La dirección de la sucursal.
+	 * @param ciudad - La ciudad de la sucursal.
+	 * @param idLocalVentas - El local de ventas asociado a la sucursal.
+	 * @return El número de tuplas insertadas.
+	 */
+	public long adicionarSucursal (PersistenceManager pm, String nombre, String direccion, String ciudad, int idLocalVentas) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + psa.darTablaSucursal () + "(direccion, nombreSucursal, ciudad, reorden, capacidad,idBodega,nombreLocalVentas) values (?, ?, ?, ?, ?, ?, ?)");
-        q.setParameters(direccion, nombreSucursal, ciudad, reOrden, capacidad,idBodega,nombreLocalVentas);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + psa.darTablaSucursal () + "(nombre, direccion, ciudad, id_localventas) VALUES (?, ?, ?, ?)");
+        q.setParameters(nombre,direccion,ciudad,idLocalVentas);
         return (long) q.executeUnique();
 	}
 
-
-	public long eliminarSucursalPorNombre (PersistenceManager pm, String nombreSucursal)
+	/**
+	 * Crea y ejecuta la sentencia SQL para eliminar una SUCURSAL de la base de datos de SuperAndes, por su nombre, dirección y ciudad.
+	 * @param pm - El manejador de persistencia.
+	 * @param nombre - El nombre de la sucursal.
+	 * @param direccion - La dirección de la sucursal.
+	 * @param ciudad - La ciudad de la sucursal.
+	 * @return El objeto SUCURSAL que tiene el nombre, la dirección y ciudad dadas
+	 */
+	public Sucursal darSucursalPorNombreDireccionCiudad (PersistenceManager pm, String nombre, String direccion, String ciudad)
 	{
-        Query q = pm.newQuery(SQL, "DELETE FROM " + psa.darTablaSucursal () + " WHERE nombreSucursal = ?");
-        q.setParameters(nombreSucursal);
-        return (long) q.executeUnique();
-	}
-
-	
-	public Sucursal darSucursalPorNombre (PersistenceManager pm, String nombreSucursal) 
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + psa.darTablaSucursal () + " WHERE nombreSucursal = ?");
-		q.setResultClass(Sucursal.class);
-		q.setParameters(nombreSucursal);
+        Query q = pm.newQuery(SQL, "SELECT * FROM " + psa.darTablaSucursal () + " WHERE nombre = ? AND direccion = ? AND ciudad = ? ");
+        q.setResultClass(Sucursal.class);
+        q.setParameters(nombre, direccion, ciudad);
 		return (Sucursal) q.executeUnique();
 	}
-
 	
-	public List<Sucursal> darSucursalesPorCiudad (PersistenceManager pm, String localVentas) 
+	/**
+	 * Crea y ejecuta la sentencia SQL para eliminar una SUCURSAL de la base de datos de SuperAndes, por su nombre, direccion y ciudad.
+	 * @param pm - El manejador de persistencia.
+	 * @param nombre - El nombre de la sucursal.
+	 * @param direccion - La dirección de la sucursal.
+	 * @param ciudad - La ciudad de la sucursal.
+	 * @return El número de tuplas eliminadas.
+	 */
+	public long eliminarSucursalPorNombreDireccionCiudad (PersistenceManager pm, String nombre, String direccion, String ciudad)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + psa.darTablaSucursal () + " WHERE localVentas = ?");
+        Query q = pm.newQuery(SQL, "DELETE FROM " + psa.darTablaSucursal () + " WHERE nombre = ? AND direccion = ? AND ciudad = ? ");
+        q.setParameters(nombre, direccion, ciudad);
+        return (long) q.executeUnique();
+	}
+
+	/**
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de LAS SUCURSALES de la 
+	 * base de datos de SuperAndes, por su ciudad.
+	 * @param pm - El manejador de persistencia
+	 * @param ciudad - El ciudad de la sucursal.
+	 * @return Una lista de objetos SUCURSAL que tiene la ciudad dada.
+	 */
+	public List<Sucursal> darSucursalesPorCiudad (PersistenceManager pm, String ciudad) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + psa.darTablaSucursal () + " WHERE ciudad = ?");
 		q.setResultClass(Sucursal.class);
-		q.setParameters(localVentas);
+		q.setParameters(ciudad);
 		return (List<Sucursal>) q.executeList();
 	}
 
+	/**
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de LAS SUCURSALES de la 
+	 * base de datos de SuperAndes
+	 * @param pm - El manejador de persistencia
+	 * @return Una lista de objetos SUCURSAL
+	 */
+	public List<Sucursal> darSucursales (PersistenceManager pm) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + psa.darTablaSucursal ());
+		q.setResultClass(Sucursal.class);
+		return (List<Sucursal>) q.executeList();
+	}
 	
 	
 

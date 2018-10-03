@@ -29,7 +29,7 @@ public class Proveedor {
 	/**
 	 * El tipo de proveedor, puede ser parte de un conjunto de proveedores o el proveedor específico de un producto.
 	 */
-	private String tipoProveedor;
+	private String tipoproveedor;
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -121,7 +121,7 @@ public class Proveedor {
 	 * @return El tipo de proveedor. 
 	 */
 	public String getTipoProveedor() {
-		return tipoProveedor;
+		return tipoproveedor;
 	}
 
 	/**
@@ -129,8 +129,8 @@ public class Proveedor {
 	 * 
 	 * @param tipoProveedor - El tipo de proveedor. 
 	 */
-	public void setTipoProveedor(String tipoProveedor) {
-		this.tipoProveedor = tipoProveedor;
+	public void setTipoProveedor(String tipoproveedor) {
+		this.tipoproveedor = tipoproveedor;
 	}
 
 

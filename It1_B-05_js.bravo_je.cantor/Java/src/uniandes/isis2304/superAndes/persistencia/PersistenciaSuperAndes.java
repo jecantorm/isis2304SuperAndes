@@ -26,7 +26,7 @@ public class PersistenciaSuperAndes {
 	 * 			Constantes
 	 *****************************************************************/
 	/**
-	 * Logger para escribir la traza de la ejecución
+	 * Logger para escribir la traza de la ejecuciï¿½n
 	 */
 	private static Logger log = Logger.getLogger(PersistenciaSuperAndes.class.getName());
 	
@@ -39,12 +39,12 @@ public class PersistenciaSuperAndes {
 	 * 			Atributos
 	 *****************************************************************/
 	/**
-	 * Atributo privado que es el único objeto de la clase - Patrón SINGLETON
+	 * Atributo privado que es el ï¿½nico objeto de la clase - Patrï¿½n SINGLETON
 	 */
 	private static PersistenciaSuperAndes instance;
 	
 	/**
-	 * Fábrica de Manejadores de persistencia, para el manejo correcto de las transacciones
+	 * Fï¿½brica de Manejadores de persistencia, para el manejo correcto de las transacciones
 	 */
 	private PersistenceManagerFactory pmf;
 	
@@ -119,11 +119,11 @@ public class PersistenciaSuperAndes {
 	private SQLUtil sqlUtil;
 	
 	/* ****************************************************************
-	 * 			Métodos del MANEJADOR DE PERSISTENCIA
+	 * 			Mï¿½todos del MANEJADOR DE PERSISTENCIA
 	 *****************************************************************/
 
 	/**
-	 * Constructor privado con valores por defecto - Patrón SINGLETON
+	 * Constructor privado con valores por defecto - Patrï¿½n SINGLETON
 	 */
 	private PersistenciaSuperAndes ()
 	{
@@ -133,24 +133,24 @@ public class PersistenciaSuperAndes {
 		// Define los nombres por defecto de las tablas de la base de datos
 		tablas = new LinkedList<String> ();
 		tablas.add ("superAndes_sequence"); //0
-		tablas.add ("ALMACENAMIENTO"); //1
-		tablas.add ("BODEGA"); //2        
-		tablas.add ("CLIENTE");//3        
-		tablas.add ("EMPRESA");//4       
-		tablas.add ("ESTANTE");// 5        
-		tablas.add ("FACTURA");// 6        
-		tablas.add ("LOCAL_VENTAS"); //7   
-		tablas.add ("PEDIDO");//8         
-        tablas.add ("PERSONANATURAL"); //9 
-	    tablas.add ("PRODUCTO"); //10      
-	    tablas.add ("PROMOCION"); //11
-	    tablas.add ("PROVEEDOR"); //12
-	    tablas.add ("SUCURSAL"); //13       
+		tablas.add ("A_ALMACENAMIENTO"); //1
+		tablas.add ("A_BODEGA"); //2        
+		tablas.add ("A_CLIENTE");//3        
+		tablas.add ("A_EMPRESA");//4       
+		tablas.add ("A_ESTANTE");// 5        
+		tablas.add ("A_FACTURA");// 6        
+		tablas.add ("A_LOCAL_VENTAS"); //7   
+		tablas.add ("A_PEDIDO");//8         
+        tablas.add ("A_PERSONANATURAL"); //9 
+	    tablas.add ("A_PRODUCTO"); //10      
+	    tablas.add ("A_PROMOCION"); //11
+	    tablas.add ("A_PROVEEDOR"); //12
+	    tablas.add ("A_SUCURSAL"); //13       
 	
 	}
 
 	/**
-	 * Constructor privado, que recibe los nombres de las tablas en un objeto Json - Patrón SINGLETON
+	 * Constructor privado, que recibe los nombres de las tablas en un objeto Json - Patrï¿½n SINGLETON
 	 * @param tableConfig - Objeto Json que contiene los nombres de las tablas y de la unidad de persistencia a manejar
 	 */
 	private PersistenciaSuperAndes (JsonObject tableConfig)
@@ -165,7 +165,7 @@ public class PersistenciaSuperAndes {
 	
 	
 	/**
-	 * @return Retorna el único objeto PersistenciaSuperAndes existente - Patrón SINGLETON
+	 * @return Retorna el ï¿½nico objeto PersistenciaSuperAndes existente - Patrï¿½n SINGLETON
 	 */
 	public static PersistenciaSuperAndes getInstance ()
 	{
@@ -179,7 +179,7 @@ public class PersistenciaSuperAndes {
 	/**
 	 * Constructor que toma los nombres de las tablas de la base de datos del objeto tableConfig
 	 * @param tableConfig - El objeto JSON con los nombres de las tablas
-	 * @return Retorna el único objeto PersistenciaSuperAndes existente - Patrón SINGLETON
+	 * @return Retorna el ï¿½nico objeto PersistenciaSuperAndes existente - Patrï¿½n SINGLETON
 	 */
 	public static PersistenciaSuperAndes getInstance (JsonObject tableConfig)
 	{
@@ -191,7 +191,7 @@ public class PersistenciaSuperAndes {
 	}
 
 	/**
-	 * Cierra la conexión con la base de datos
+	 * Cierra la conexiï¿½n con la base de datos
 	 */
 	public void cerrarUnidadPersistencia ()
 	{
@@ -200,9 +200,9 @@ public class PersistenciaSuperAndes {
 	}
 	
 	/**
-	 * Extrae el mensaje de la exception JDODataStoreException embebido en la Exception e, que da el detalle específico del problema encontrado
-	 * @param e - La excepción que ocurrio
-	 * @return El mensaje de la excepción JDO
+	 * Extrae el mensaje de la exception JDODataStoreException embebido en la Exception e, que da el detalle especï¿½fico del problema encontrado
+	 * @param e - La excepciï¿½n que ocurrio
+	 * @return El mensaje de la excepciï¿½n JDO
 	 */
 	private String darDetalleException(Exception e) 
 	{
@@ -358,9 +358,9 @@ public class PersistenciaSuperAndes {
 	}
 	
 	/**
-	 * Transacción para el generador de secuencia de SuperAndes
-	 * Adiciona entradas al log de la aplicación
-	 * @return El siguiente número del secuenciador de SuperAndes
+	 * Transacciï¿½n para el generador de secuencia de SuperAndes
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return El siguiente nï¿½mero del secuenciador de SuperAndes
 	 */
 	private long nextval ()
 	{
@@ -379,14 +379,14 @@ public class PersistenciaSuperAndes {
 	
 
 	/* ****************************************************************
-	 * 			Métodos para manejar los CLIENTES
+	 * 			Mï¿½todos para manejar los CLIENTES
 	 *****************************************************************/
 
 	/**
-	 * Método que inserta, de manera transaccional, una tupla en la tabla Clientes
-	 * Adiciona entradas al log de la aplicación
+	 * Mï¿½todo que inserta, de manera transaccional, una tupla en la tabla Clientes
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param nombre - El nombre del tipo de bebida
-	 * @return El objeto TipoBebida adicionado. null si ocurre alguna Excepción
+	 * @return El objeto TipoBebida adicionado. null si ocurre alguna Excepciï¿½n
 	 */
 	public Cliente adicionarCliente(String nombre, String correo)
 	{
@@ -399,7 +399,7 @@ public class PersistenciaSuperAndes {
             long tuplasInsertadas = sqlCliente.adicionarCliente(pm, correo, nombre,0);
             tx.commit();
             
-            log.trace ("Inserción de cliente: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+            log.trace ("Inserciï¿½n de cliente: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
             
             return new Cliente (nombre, correo,0);
         }
@@ -420,10 +420,10 @@ public class PersistenciaSuperAndes {
 	}
 
 	/**
-	 * Método que elimina, de manera transaccional, una tupla en la tabla Cliente, dado el nombre del tipo de bebida
-	 * Adiciona entradas al log de la aplicación
+	 * Mï¿½todo que elimina, de manera transaccional, una tupla en la tabla Cliente, dado el nombre del tipo de bebida
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param nombre - El nombre del tipo de bebida
-	 * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción
+	 * @return El nï¿½mero de tuplas eliminadas. -1 si ocurre alguna Excepciï¿½n
 	 */
 	public long eliminarClientePorNombre (String nombre) 
 	{
@@ -453,10 +453,10 @@ public class PersistenciaSuperAndes {
 	}
 
 	/**
-	 * Método que elimina, de manera transaccional, una tupla en la tabla Cliente, dado el identificador del tipo de bebida
-	 * Adiciona entradas al log de la aplicación
+	 * Mï¿½todo que elimina, de manera transaccional, una tupla en la tabla Cliente, dado el identificador del tipo de bebida
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param idTipoBebida - El identificador del tipo de bebida
-	 * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción
+	 * @return El nï¿½mero de tuplas eliminadas. -1 si ocurre alguna Excepciï¿½n
 	 */
 	public long eliminarClientePorCorreo (String correo) 
 	{
@@ -486,7 +486,7 @@ public class PersistenciaSuperAndes {
 	}
 
 	/**
-	 * Método que consulta todas las tuplas en la tabla Clientes
+	 * Mï¿½todo que consulta todas las tuplas en la tabla Clientes
 	 * @return La lista de objetos TipoBebida, construidos con base en las tuplas de la tabla TIPOBEBIDA
 	 */
 	public List<Cliente> darClientes()
@@ -495,7 +495,7 @@ public class PersistenciaSuperAndes {
 	}
  
 	/**
-	 * Método que consulta todas las tuplas en la tabla Cliente que tienen el nombre dado
+	 * Mï¿½todo que consulta todas las tuplas en la tabla Cliente que tienen el nombre dado
 	 * @param nombre - El nombre del tipo de bebida
 	 * @return La lista de objetos TipoBebida, construidos con base en las tuplas de la tabla TIPOBEBIDA
 	 */
@@ -505,7 +505,7 @@ public class PersistenciaSuperAndes {
 	}
  
 	/**
-	 * Método que consulta todas las tuplas en la tabla TipoBebida con un identificador dado
+	 * Mï¿½todo que consulta todas las tuplas en la tabla TipoBebida con un identificador dado
 	 * @param idTipoBebida - El identificador del tipo de bebida
 	 * @return El objeto TipoBebida, construido con base en las tuplas de la tabla TIPOBEBIDA con el identificador dado
 	 */
@@ -516,14 +516,14 @@ public class PersistenciaSuperAndes {
 	
 
 	/* ****************************************************************
-	 * 			Métodos para manejar las Bodegas
+	 * 			Mï¿½todos para manejar las Bodegas
 	 *****************************************************************/
 
 	/**
-	 * Método que inserta, de manera transaccional, una tupla en la tabla Clientes
-	 * Adiciona entradas al log de la aplicación
+	 * Mï¿½todo que inserta, de manera transaccional, una tupla en la tabla Clientes
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param nombre - El nombre del tipo de bebida
-	 * @return El objeto TipoBebida adicionado. null si ocurre alguna Excepción
+	 * @return El objeto TipoBebida adicionado. null si ocurre alguna Excepciï¿½n
 	 */
 	public Bodega adicionarBodega(int idAlmacenamiento, String nombreBodega)
 	{
@@ -536,7 +536,7 @@ public class PersistenciaSuperAndes {
             long tuplasInsertadas = sqlBodega.adicionarBodega(pm, idAlmacenamiento, nombreBodega);
             tx.commit();
             
-            log.trace ("Inserción de bodega: " + nombreBodega + ": " + tuplasInsertadas + " tuplas insertadas");
+            log.trace ("Inserciï¿½n de bodega: " + nombreBodega + ": " + tuplasInsertadas + " tuplas insertadas");
             
             return new Bodega (nombreBodega);
         }
@@ -557,10 +557,10 @@ public class PersistenciaSuperAndes {
 	}
 
 	/**
-	 * Método que elimina, de manera transaccional, una tupla en la tabla Cliente, dado el nombre del tipo de bebida
-	 * Adiciona entradas al log de la aplicación
+	 * Mï¿½todo que elimina, de manera transaccional, una tupla en la tabla Cliente, dado el nombre del tipo de bebida
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param nombre - El nombre del tipo de bebida
-	 * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción
+	 * @return El nï¿½mero de tuplas eliminadas. -1 si ocurre alguna Excepciï¿½n
 	 */
 	public long eliminarBodegaPorNombre (String nombre) 
 	{
@@ -591,7 +591,7 @@ public class PersistenciaSuperAndes {
 
 
 	/**
-	 * Método que consulta todas las tuplas en la tabla Clientes
+	 * Mï¿½todo que consulta todas las tuplas en la tabla Clientes
 	 * @return La lista de objetos TipoBebida, construidos con base en las tuplas de la tabla TIPOBEBIDA
 	 */
 	public List<Bodega> darBodegas()
@@ -603,7 +603,7 @@ public class PersistenciaSuperAndes {
 	/**
 	 * Elimina todas las tuplas de todas las tablas de la base de datos de SuperAndes
 	 * Crea y ejecuta las sentencias SQL para cada tabla de la base de datos - EL ORDEN ES IMPORTANTE 
-	 * @return Un arreglo con 7 números que indican el número de tuplas borradas en las tablas GUSTAN, SIRVEN, VISITAN, BEBIDA,
+	 * @return Un arreglo con 7 nï¿½meros que indican el nï¿½mero de tuplas borradas en las tablas GUSTAN, SIRVEN, VISITAN, BEBIDA,
 	 * TIPOBEBIDA, BEBEDOR y BAR, respectivamente
 	 */
 	public long [] limpiarSuperAndes ()

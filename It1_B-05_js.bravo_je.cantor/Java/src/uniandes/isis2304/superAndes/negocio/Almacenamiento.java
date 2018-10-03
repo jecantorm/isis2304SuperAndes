@@ -110,36 +110,36 @@ public abstract class Almacenamiento {
 	}
 
 	/**
-	 * Retorna la capacidad volum�trica m�xima del almacenamiento.
+	 * Retorna la capacidad volumétrica máxima del almacenamiento.
 	 * 
-	 * @return La capacidad volum�trica m�xima del almacenamiento.
+	 * @return La capacidad volumétrica máxima del almacenamiento.
 	 */
 	public double getCapacidadVolumen() {
 		return capacidadVolumen;
 	}
 
 	/**
-	 * Asigna la capacidad volum�trica m�xima del almacenamiento.
+	 * Asigna la capacidad volumétrica máxima del almacenamiento.
 	 * 
-	 * @param capacidadVolumen - La capacidad volum�trica m�xima del almacenamiento.
+	 * @param capacidadVolumen - La capacidad volumétrica máxima del almacenamiento.
 	 */
 	public void setCapacidadVolumen(double capacidadVolumen) {
 		this.capacidadVolumen = capacidadVolumen;
 	}
 
 	/**
-	 * Retorna el peso m�ximo que soporta el almacenamiento.
+	 * Retorna el peso máximo que soporta el almacenamiento.
 	 * 
-	 * @return El peso m�ximo que soporta el almacenamiento.
+	 * @return El peso máximo que soporta el almacenamiento.
 	 */
 	public double getCapacidadPeso() {
 		return capacidadPeso;
 	}
 
 	/**
-	 * Asigna el peso m�ximo que soporta el almacenamiento.
+	 * Asigna el peso máximo que soporta el almacenamiento.
 	 * 
-	 * @param capacidadPeso -  El peso m�ximo que soporta el almacenamiento.
+	 * @param capacidadPeso -  El peso máximo que soporta el almacenamiento.
 	 */
 	public void setCapacidadPeso(double capacidadPeso) {
 		this.capacidadPeso = capacidadPeso;
@@ -182,18 +182,18 @@ public abstract class Almacenamiento {
 	}
 
 	/**
-	 * Retorna la direcci�n de la sucursal a la cual pertenece el almacenamiento.
+	 * Retorna la dirección de la sucursal a la cual pertenece el almacenamiento.
 	 * 
-	 * @return La direcci�n de la sucursal a la cual pertenece el almacenamiento.
+	 * @return La dirección de la sucursal a la cual pertenece el almacenamiento.
 	 */
 	public String getDireccionSucursal() {
 		return direccionSucursal;
 	}
 
 	/**
-	 * Asigna la direcci�n de la sucursal a la cual pertenece el almacenamiento.
+	 * Asigna la dirección de la sucursal a la cual pertenece el almacenamiento.
 	 * 
-	 * @param direccionSucursal - La direcci�n de la sucursal a la cual pertenece el almacenamiento.
+	 * @param direccionSucursal - La dirección de la sucursal a la cual pertenece el almacenamiento.
 	 */
 	public void setDireccionSucursal(String direccionSucursal) {
 		this.direccionSucursal = direccionSucursal;

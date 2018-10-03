@@ -158,11 +158,6 @@ public class PersistenciaSuperAndes {
 		crearClasesSQL ();
 		tablas = leerNombresTablas (tableConfig);
 		
-		for (String e : tablas)
-		{
-			System.out.println(e);
-		}
-		
 		String unidadPersistencia = tableConfig.get ("unidadPersistencia").getAsString ();
 		log.trace ("Accediendo unidad de persistencia: " + unidadPersistencia);
 		pmf = JDOHelper.getPersistenceManagerFactory (unidadPersistencia);
@@ -519,16 +514,91 @@ public class PersistenciaSuperAndes {
 		return sqlCliente.darClientePorCorreo (pmf.getPersistenceManager(), correo);
 	}
 	
+
+	/* ****************************************************************
+	 * 			Métodos para manejar las Bodegas
+	 *****************************************************************/
+
 	/**
-	 * Método que consulta todas las tuplas en la tabla TipoBebida
+	 * Método que inserta, de manera transaccional, una tupla en la tabla Clientes
+	 * Adiciona entradas al log de la aplicación
+	 * @param nombre - El nombre del tipo de bebida
+	 * @return El objeto TipoBebida adicionado. null si ocurre alguna Excepción
+	 */
+	public Bodega adicionarBodega(int idAlmacenamiento, String nombreBodega)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            //long idCliente = nextval ();
+            long tuplasInsertadas = sqlBodega.adicionarBodega(pm, idAlmacenamiento, nombreBodega);
+            tx.commit();
+            
+            log.trace ("Inserción de bodega: " + nombreBodega + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Bodega (nombreBodega);
+        }
+        catch (Exception e)
+        {
+        	e.printStackTrace();
+        	System.out.println ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+
+	/**
+	 * Método que elimina, de manera transaccional, una tupla en la tabla Cliente, dado el nombre del tipo de bebida
+	 * Adiciona entradas al log de la aplicación
+	 * @param nombre - El nombre del tipo de bebida
+	 * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción
+	 */
+	public long eliminarBodegaPorNombre (String nombre) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlBodega.eliminarBodegaPorNombre(pm, nombre);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+
+
+	/**
+	 * Método que consulta todas las tuplas en la tabla Clientes
 	 * @return La lista de objetos TipoBebida, construidos con base en las tuplas de la tabla TIPOBEBIDA
 	 */
-	public List<Bodega> darBodegas ()
+	public List<Bodega> darBodegas()
 	{
 		return sqlBodega.darBodegas (pmf.getPersistenceManager());
 	}
-	
-
+ 
 	
 	/**
 	 * Elimina todas las tuplas de todas las tablas de la base de datos de SuperAndes

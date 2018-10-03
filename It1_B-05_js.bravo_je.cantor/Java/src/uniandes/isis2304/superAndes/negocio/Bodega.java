@@ -14,9 +14,13 @@ public class Bodega extends Almacenamiento {
 	/**
 	 * Constructor sin parámetros por defecto
 	 */
-	public Bodega()
+	
+	private String nombreBodega;
+	
+	public Bodega(String nombreBodega)
 	{
 		super();
+		setNombreBodega(nombreBodega);
 	}
 
 	/**
@@ -33,6 +37,7 @@ public class Bodega extends Almacenamiento {
 	{
 		super(idAlmacenamiento, cantidadProductos, capacidadPeso, capacidadVolumen, nombreSucursal, direccionSucursal, ciudadSucursal);
 	}
+	public void setNombreBodega(String nombreBodega){this.nombreBodega = nombreBodega;}
 
 
 }

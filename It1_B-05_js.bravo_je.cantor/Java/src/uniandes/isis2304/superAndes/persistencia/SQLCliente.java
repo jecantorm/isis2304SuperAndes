@@ -1,7 +1,8 @@
 package uniandes.isis2304.superAndes.persistencia;
 
+import java.util.LinkedList;
 import java.util.List;
-
+import java.math.BigDecimal;
 import java.sql.*;
 
 import javax.jdo.PersistenceManager;
@@ -81,9 +82,21 @@ class SQLCliente {
 	public List<Cliente> darClientes (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + psa.darTablaCliente ());
-		q.setResultClass(Cliente.class);
+		List <Cliente> rsp = new LinkedList<>();
+		List e = q.executeList();
 		
-		return (List<Cliente>) q.executeList();
+		for(Object obj: e)
+		{
+			Object [] datos = (Object[]) obj;
+			String correo = (String)datos[0];
+			String nombre = (String)datos[1];
+			BigDecimal puntosFidelizacion = (BigDecimal)datos[2];
+			int pf = puntosFidelizacion.intValue();
+			rsp.add(new Cliente(nombre,correo,pf));
+		}
+		
+		return rsp;
+
 	}
 	
 	public long aumentarPuntosFidelizacionCliente (PersistenceManager pm, String nombre, int puntosFidelizacion)

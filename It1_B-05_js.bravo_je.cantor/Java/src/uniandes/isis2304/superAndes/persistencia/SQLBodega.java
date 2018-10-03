@@ -41,37 +41,19 @@ class SQLBodega {
 	}
 	
 	
-	public long adicionarBodega (PersistenceManager pm, String nombreSucursal, String direccion, String ciudad, Long idBodega, String nombreLocalVentas,double reOrden, double capacidad) 
+	public long adicionarBodega (PersistenceManager pm, int idAlmacenamiento, String nombreBodega) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + psa.darTablaBodega () + "(direccion, nombreSucursal, ciudad, reorden, capacidad,idBodega,nombreLocalVentas) values (?, ?, ?, ?, ?, ?, ?)");
-        q.setParameters(direccion, nombreSucursal, ciudad, reOrden, capacidad,idBodega,nombreLocalVentas);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + psa.darTablaBodega () + "(ID_ALMACENAMIENTO, NOMBRE_BODEGA) values ("+idAlmacenamiento+", "+nombreBodega+"s)");
+
         return (long) q.executeUnique();
 	}
 
 
-	public long eliminarSucursalPorNombre (PersistenceManager pm, String nombreSucursal)
+	public long eliminarBodegaPorNombre (PersistenceManager pm, String nombreSucursal)
 	{
-        Query q = pm.newQuery(SQL, "DELETE FROM " + psa.darTablaBodega () + " WHERE nombreSucursal = ?");
+        Query q = pm.newQuery(SQL, "DELETE FROM " + psa.darTablaBodega () + " WHERE nombre_bodega = "+nombreSucursal);
         q.setParameters(nombreSucursal);
         return (long) q.executeUnique();
-	}
-
-	
-	public Sucursal darSucursalPorNombre (PersistenceManager pm, String nombreSucursal) 
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + psa.darTablaBodega () + " WHERE nombreSucursal = ?");
-		q.setResultClass(Sucursal.class);
-		q.setParameters(nombreSucursal);
-		return (Sucursal) q.executeUnique();
-	}
-
-	
-	public List<Bodega> darSucursalesPorCiudad (PersistenceManager pm, String localVentas) 
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + psa.darTablaBodega () + " WHERE localVentas = ?");
-		q.setResultClass(Bodega.class);
-		q.setParameters(localVentas);
-		return (List<Bodega>) q.executeList();
 	}
 	
 	public List<Bodega> darBodegas (PersistenceManager pm) 

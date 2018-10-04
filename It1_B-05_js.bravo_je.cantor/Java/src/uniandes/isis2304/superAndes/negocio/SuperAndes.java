@@ -3,10 +3,17 @@ package uniandes.isis2304.superAndes.negocio;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.swing.JTextField;
+
 import org.apache.log4j.Logger;
 
 import com.google.gson.JsonObject;
 
+import uniandes.isis2304.superAndes.negocio.Pedido;
+import uniandes.isis2304.superAndes.negocio.Promocion;
+import uniandes.isis2304.superAndes.negocio.Bodega;
+import uniandes.isis2304.superAndes.negocio.LocalVentas;
+import uniandes.isis2304.superAndes.negocio.Sucursal;
 import uniandes.isis2304.superAndes.persistencia.PersistenciaSuperAndes;
 
 public class SuperAndes {
@@ -163,5 +170,66 @@ public class SuperAndes {
         log.info ("Limpiando la BD de SuperAndes: Listo!");
         return borrrados;
 	}
+
+	public Producto adicionarProducto(String text, String text2, String text3, String text4, double parseDouble,
+			double parseDouble2, double parseDouble3, String text5, double parseDouble4, int parseInt, long parseLong,
+			JTextField nit) {
+		
+		return null;
+	}
+
+	public Proveedor adicionarProveedor(long parseLong, String text, int parseInt) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public PersonaNatural adicionarPersonaNatural(String text, String text2, int parseInt, String text3,
+			long parseLong) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Sucursal adicionarSucursal(String text, String text2, String text3, long parseLong2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public LocalVentas adicionarLocalVentas(long parseLong, double parseDouble) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Bodega adicionarBodega(long parseLong, String text, String text2, String text3, double parseDouble,
+			double parseDouble2, int parseInt,String nombreBodega) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Estante adicionarEstante(long parseLong, String text, String text2, String text3, double parseDouble,
+			double parseDouble2, int parseInt, String text4, double parseDouble3) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Pedido adicionarPedido(long parseLong, double parseDouble, String text, String text2, String text3,
+			String text4, String text5, String text6, int parseInt, double parseDouble2, int parseInt2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Factura adicionarFactura(long parseLong, String text, double parseDouble, double parseDouble2,
+			double parseDouble3, double parseDouble4, String text2, String text3, String text4, String text5,
+			String text6) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Promocion adicionarPromocion(long parseLong, long parseLong2, String text, String text2, String text3,
+			String text4) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }

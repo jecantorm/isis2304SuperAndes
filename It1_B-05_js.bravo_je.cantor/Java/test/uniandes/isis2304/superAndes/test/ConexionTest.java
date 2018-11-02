@@ -177,8 +177,8 @@ public class ConexionTest {
 		catch (Exception e)
 		{
 			e.printStackTrace();
-			log.info ("Prueba de tabla inexistente correcta. La excepción generada es: " + e.getClass ().getName ());
-			log.info ("La causa es: " + e.getCause ().toString ());
+			System.out.println ("Prueba de tabla inexistente correcta. La excepción generada es: " + e.getClass ().getName ());
+			System.out.println ("La causa es: " + e.getCause ().toString ());
 
 			String msg = "Prueba de tabla inexistente correcta.\n";
 			msg += "Revise el log de parranderos y el de datanucleus para conocer el detalle de la excepción";

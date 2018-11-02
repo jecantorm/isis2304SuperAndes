@@ -171,16 +171,22 @@ public class SuperAndes {
         return borrrados;
 	}
 
-	public Producto adicionarProducto(String text, String text2, String text3, String text4, double parseDouble,
-			double parseDouble2, double parseDouble3, String text5, double parseDouble4, int parseInt, long parseLong,
-			JTextField nit) {
-		
-		return null;
+	public Producto adicionarProducto(String codigoBarras, long idPromocion, String nombre, String marca, double precioUnitario,
+			double volumenEmpaquetado, double peso, String categoria, double nivelReorden, int idFatura, long idAlmacenamiento,
+			long nitProveedor, double precioUnidadMedida, int cantidad, String unidadMedida) 
+	{
+		System.out.println ("Adicionando producto: " + nombre);
+        Producto producto = psa.adicionarProducto (codigoBarras,idPromocion,nombre,marca,precioUnitario,volumenEmpaquetado,peso, categoria,nivelReorden,idFatura, idAlmacenamiento,nitProveedor,precioUnidadMedida,cantidad,unidadMedida) ;
+        System.out.println ("Adicionando producto: " + nombre);
+        return producto;
 	}
 
-	public Proveedor adicionarProveedor(long parseLong, String text, int parseInt) {
-		// TODO Auto-generated method stub
-		return null;
+	public Proveedor adicionarProveedor(long nit, String nombre, int calificacion,String tipoProveedor)
+	{
+        System.out.println ("Adicionando proveedor: " + nombre);
+        Proveedor proveedor = psa.adicionarProveedor (nit,nombre,calificacion,tipoProveedor);
+        System.out.println ("Adicionando proveedor: " + proveedor);
+        return proveedor;
 	}
 
 	public PersonaNatural adicionarPersonaNatural(String text, String text2, int parseInt, String text3,

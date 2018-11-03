@@ -62,22 +62,6 @@ public class SuperAndes {
 		psa.cerrarUnidadPersistencia ();
 	}
 	
-	/* ****************************************************************
-	 * 			Métodos para manejar los CLIENTES
-	 *****************************************************************/
-	/**
-	 * Adiciona de manera persistente un cliente 
-	 * Adiciona entradas al log de la aplicación
-	 * @param nombre - El nombre del tipo cliente
-	 * @return El objeto TipoBebida adicionado. null si ocurre alguna Excepción
-	 */
-	public Cliente adicionarCliente (String nombre, String correo)
-	{
-        log.info ("Adicionando Cliente: " + nombre);
-        Cliente cliente = psa.adicionarCliente (nombre,correo);		
-        log.info ("Adicionando Cliente: " + cliente);
-        return cliente;
-	}
 	
 	/**
 	 * Elimina un cliente por su nombre
@@ -189,10 +173,21 @@ public class SuperAndes {
         return proveedor;
 	}
 
-	public PersonaNatural adicionarPersonaNatural(String text, String text2, int parseInt, String text3,
-			long parseLong) {
-		// TODO Auto-generated method stub
-		return null;
+	public PersonaNatural adicionarPersonaNatural(String correo, String nombre, int puntos, String tipoId,
+			long numIdentificacion)
+	{
+		System.out.println ("Adicionando Cliente: " + nombre);
+        psa.adicionarCliente (nombre,correo,puntos);
+        System.out.println ("Adicionando Cliente: " + nombre);
+        
+        System.out.println ("=========================================================================");
+		
+		System.out.println ("Adicionando Persona Natural: " + nombre);
+        PersonaNatural personaNatural = psa.adicionarPersonaNatural (correo,tipoId,numIdentificacion,puntos,nombre);
+        System.out.println ("Adicionando Persona Natural: " + nombre);
+        
+        return personaNatural;
+		
 	}
 
 	public Sucursal adicionarSucursal(String text, String text2, String text3, long parseLong2) {

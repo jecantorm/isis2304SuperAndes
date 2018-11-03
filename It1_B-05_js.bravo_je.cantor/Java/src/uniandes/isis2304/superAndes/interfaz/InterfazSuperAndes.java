@@ -402,7 +402,7 @@ public class InterfazSuperAndes extends JFrame implements ActionListener{
 	    	{
 	    		e.printStackTrace();
 				String resultado = generarMensajeError(e);
-				panelDatos.actualizarInterfaz(resultado);
+				panelDatos.actualizarInterfaz(resultado + " " + e.getMessage());
 			}
 	    }
 	    
